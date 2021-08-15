@@ -74,3 +74,7 @@ body {
 	transform: rotateY(180deg);
 }
 
+button {
+    font-size: 21px;
+    padding: 17px;
+}
