@@ -1,0 +1,76 @@
+body {
+	background-image: url(images/background.jpg);
+	overflow: hidden;
+}
+
+.card-wrap {
+	filter: drop-shadow(2px 4px 6px black);
+	-webkit-transform-style: preserve-3d;
+	
+	transition: transform 1s, opacity .5s, left 1s, top 1s;
+	position: absolute;
+}
+
+.card-wrap * {
+	pointer-events: none;
+}
+
+.card-front {
+    background: url(images/card-background.jpg);
+    background-size: cover;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card-wrap .card-back {
+    transform: rotateY(180deg);
+    transform-origin: center;
+	background: url(images/card-back.jpg);
+    background-size: cover;
+}
+
+.card-front * {
+    color: #e0e0e0;
+    text-align: center;
+	margin: 0;
+}
+
+.card-front .card-image {
+	flex: 1 1 auto;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin: 10px;
+}
+
+
+#card-0 .card-image {
+	background-image: url(images/card1.jpg);
+}
+
+.card-wrap .card-front, .card-wrap .card-back, .card-wrap {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+	position: absolute;
+	width: 300px;
+    height: 200px;
+	box-sizing: border-box;
+    border-radius: 18px;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	transform-origin: center;
+}
+
+
+
+.rotate-wrap {
+    transform-origin: center;
+	transform-style: preserve-3d;
+	transition: transform 1s;
+}
+
+.card-wrap.flipped .rotate-wrap {
+	transform: rotateY(180deg);
+}
+
