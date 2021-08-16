@@ -16,6 +16,8 @@ let app = {
 		document.getElementById("discard-all-button").addEventListener("click", function(e) {this.discardAllClick()}.bind(this));
 		document.getElementById("reshuffle-discard-button").addEventListener("click", function(e) {this.reshuffleAll()}.bind(this));
 		
+		window.addEventListener('resize', function(e) {this.resizeWindow()}.bind(this));
+		
 		this.updateRondell();
 	},
 
@@ -83,6 +85,8 @@ let app = {
 		return a;
 	},
 	updateRondell: function() {
+		let cardWidth = 300;
+		let scaleFactor = Math.min(window.innerHeight * .8, window.innerWidth) / cardWidth * .8;
 		for (let i in this.rondell) {
 			let card = this.rondell[i];
 			let cardDiv = document.querySelector("#card-" + card);
@@ -92,11 +96,11 @@ let app = {
 			}
 			if (i == 0) {
 				cardDiv.style.left = "50%";
-				cardDiv.style.top = "26%";
-				cardDiv.style.transform = "translate(-50%, -50%) scale(2)";
+				cardDiv.style.top = (20 + scaleFactor * 4) + "%";
+				cardDiv.style.transform = "translate(-50%, -50%) scale(" + scaleFactor + ")";
 			}
 			else {
-				cardDiv.style.transform = "translate(-50%, -50%) scale(1)";
+				cardDiv.style.transform = "translate(-50%, -50%) scale(" + (scaleFactor * .5) + ")";
 				let ratio;
 				if (this.rondell.length == 2) {
 					ratio = 0.5
@@ -104,8 +108,8 @@ let app = {
 				else {
 					ratio = (i-1) / (this.rondell.length - 2);
 				}
-				cardDiv.style.left = (20 + ratio * 60) + "%";
-				cardDiv.style.top = (60 - Math.pow(Math.abs(0.5 - ratio) * 5, 2)) + "%";
+				cardDiv.style.left = (22 + ratio * 56) + "%";
+				cardDiv.style.top = (40 - Math.pow(Math.abs(0.5 - ratio) * 5, 2) + scaleFactor * 15) + "%";
 				cardDiv.style.zIndex = 100 - i;
 			}
 		}
@@ -178,5 +182,8 @@ let app = {
 		this.rondell = [];
 		this.saveState();
 	},
+	resizeWindow: function(evt) {
+		this.updateRondell();
+	}
 }
 window.onload = function() {app.main()};
