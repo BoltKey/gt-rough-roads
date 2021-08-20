@@ -87,7 +87,21 @@ let app = {
 	updateRondell: function() {
 		let cardWidth = 300;
 		let scaleFactor = Math.min(window.innerHeight * .8, window.innerWidth) / cardWidth * .8;
+		let drawButton = document.getElementById("draw-button");
+		let discardButton = document.getElementById("discard-button");
+		drawButton.classList.remove("small");
+		drawButton.style.top = "20%";
+		
+		drawButton.style.width = 
+			drawButton.style.height = 
+			discardButton.style.width = 
+			discardButton.style.height = 20 + scaleFactor * 14;
+		
+		discardButton.classList.add("hidden");
 		for (let i in this.rondell) {
+			discardButton.classList.remove("hidden");
+			
+			drawButton.style.top = (30 + scaleFactor * 10) + "%";
 			let card = this.rondell[i];
 			let cardDiv = document.querySelector("#card-" + card);
 			if (!cardDiv) {
@@ -180,6 +194,7 @@ let app = {
 			this.discard.push(c);
 		}
 		this.rondell = [];
+		this.updateRondell();
 		this.saveState();
 	},
 	resizeWindow: function(evt) {

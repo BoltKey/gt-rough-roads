@@ -77,8 +77,35 @@ body {
 button {
     font-size: 21px;
     padding: 17px;
+	transition: top 1s, left 1s, transform 1s;
+	z-index: 200;
+	padding: 0;
+	border-radius: 10000px;
 }
 
 .card-wrap:hover {
 	filter: drop-shadow(0px 0px 9px yellow);
+}
+
+#draw-button {
+	background: green;
+	position: absolute;
+	transform: translate(-50%, -50%) scale(2.5);
+	left: 50%;
+	top: 20%;
+}
+#draw-button.small {
+	transform: translate(-50%, -50%);
+}
+
+#discard-button {
+	background: red;
+	position: absolute;
+	transform: translate(-50%, -50%) scale(2);
+	left: 80%;
+	top: 10%;
+	transition: opacity 1s;
+}
+#discard-button.hidden {
+	opacity: 0;
 }
