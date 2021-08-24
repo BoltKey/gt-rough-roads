@@ -122,7 +122,7 @@ let app = {
 			if (i == 0) {
 				cardDiv.style.left = "50%";
 				cardDiv.style.top = (20 + scaleFactor * 4) + "%";
-				cardDiv.style.transform = "translate(-50%, -50%) scale(" + scaleFactor + ")";
+				cardDiv.style.transform = "translate(-50%, -50%) scale(" + scaleFactor * 1.2 + ")";
 			}
 			else {
 				cardDiv.style.transform = "translate(-50%, -50%) scale(" + (scaleFactor * .5) + ")";
