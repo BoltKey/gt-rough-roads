@@ -1,6 +1,69 @@
+@font-face {
+	font-family: "amorpheusregular";
+	src: url("fonts/amorpheusregular.otf");
+}
+
 body {
 	background-image: url(images/background.jpg);
 	overflow: hidden;
+	background-size: cover;
+	margin: 0;
+	
+}
+
+#top-bar {
+	height: 10%;
+	background: rgba(200, 210, 50, 0.3);
+	border-bottom: solid rgba(200, 210, 50, 0.6) 5px;
+	position: relative;
+}
+
+#top-bar #logo {
+	width: 100%;
+	height: 100%;
+	background-image: url(images/logo-en.png);
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+#top-bar #cge-logo {
+    height: 100%;
+    width: 20%;
+    background: url(images/cge-logo.jpg);
+    position: absolute;
+    top: 0;
+    left: 20px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+	transition: transform .2s;
+}
+
+#top-bar #cge-logo:hover {
+	transform: scale(1.2);
+}
+
+#draw-number, #discard-number {
+	width: 3rem;
+    background: red;
+    height: 3rem;
+    font-size: 3rem;
+    text-align: center;
+	position: absolute;
+	left: 2rem;
+}
+
+#draw-number {
+	top: 2rem;
+}
+#discard-number {
+	bottom: 6rem;
+}
+
+#card-area {
+	position: relative;
+	height: 90%;
 }
 
 .card-wrap {
@@ -34,6 +97,10 @@ body {
     color: #e0e0e0;
     text-align: center;
 	margin: 0;
+}
+
+.card-front h2 {
+	font-family: amorpheusregular, arial;
 }
 
 .card-front .card-image {
@@ -75,9 +142,10 @@ body {
 }
 
 button {
+	position: absolute;
     font-size: 21px;
     padding: 17px;
-	transition: top 1s, left 1s, transform 1s;
+	transition: top 1s, left 1s, transform 1s, width 1s, height 1s, opacity 1s;
 	z-index: 200;
 	padding: 0;
 	border-radius: 10000px;
@@ -89,7 +157,6 @@ button {
 
 #draw-button {
 	background: green;
-	position: absolute;
 	transform: translate(-50%, -50%) scale(2.5);
 	left: 50%;
 	top: 20%;
@@ -100,39 +167,52 @@ button {
 
 #discard-button {
 	background: red;
-	position: absolute;
 	transform: translate(-50%, -50%) scale(2);
 	left: 80%;
 	top: 10%;
-	transition: opacity 1s;
 }
-#discard-button.hidden {
+:is(#discard-button, #discard-all-button).hidden {
 	opacity: 0;
+}
+
+#discard-all-button {
+	bottom: 6rem;
+	left: 19rem;
+	padding: 1rem;
+}
+
+#reshuffle-discard-button {
+	bottom: 6rem;
+	left: 6rem;
+	padding: 1rem;
 }
 
 #help-text {
 	color: white;
-    background: rgba(50, 80, 240, 0.5);
+    background: rgba(50, 80, 240, 0.85);
     border: solid blue 5px;
     border-radius: 24px;
     padding: 15px;
     position: absolute;
     bottom: 25px;
     font-size: 1.5em;
-	margin: 30px;
+	margin: 6rem;
 	opacity: 0;
 	transition: opacity .5s;
 	z-index: 200;
+	pointer-events: none;
 }
 #help-text.visible {
 	opacity: 1;
+	pointer-events: all;
 }
 
 button#help-button {
-    position: absolute;
-    bottom: 63px;
-    right: 32px;
-    width: 55px;
-    height: 55px;
+	position: absolute;
+    bottom: 6rem;
+    right: 3rem;
+    padding: 1rem;
     background: #6262d3;
+    z-index: 201;
+}
 }

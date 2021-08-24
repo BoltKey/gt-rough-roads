@@ -14,7 +14,7 @@ let app = {
 		document.getElementById("draw-button").addEventListener("click", function(e) {this.drawCard()}.bind(this), this);
 		document.getElementById("discard-button").addEventListener("click", function(e) {this.discardClick()}.bind(this));
 		document.getElementById("discard-all-button").addEventListener("click", function(e) {this.discardAllClick()}.bind(this));
-		document.getElementById("reshuffle-discard-button").addEventListener("click", function(e) {this.reshuffleAll()}.bind(this));
+		document.getElementById("reshuffle-discard-button").addEventListener("click", function(e) {this.reshuffleDiscard()}.bind(this));
 		document.getElementById("help-button").addEventListener("click", function(e) {document.getElementById("help-text").classList.toggle("visible")});
 		
 		window.addEventListener('resize', function(e) {this.resizeWindow()}.bind(this));
@@ -27,10 +27,12 @@ let app = {
 		if (oldCard = document.getElementById("card-" + id)) {
 			oldCard.remove();
 		}
-		headerText = this.currLanguage[id][0];
-		paragraphText = this.currLanguage[id][1];
 		let cardWrap = document.createElement("div");
-		cardWrap.id = "card-" + id;
+		if (id != "back") {
+			headerText = this.currLanguage[id][0];
+			paragraphText = this.currLanguage[id][1];
+			cardWrap.id = "card-" + id;
+		}
 		cardWrap.classList.add("card-wrap");
 		
 		let rotateWrap = document.createElement("div");
@@ -62,11 +64,7 @@ let app = {
 		return cardWrap;
 	},
 	
-	reshuffleDiscard: function() {
-		this.deck = this.discard;
-		this.discard = [];
-		this.shuffle(this.deck);
-	},
+	
 
 	saveState: function() {
 		localStorage.setItem("deck", JSON.stringify(this.deck));
@@ -90,24 +88,36 @@ let app = {
 		let scaleFactor = Math.min(window.innerHeight * .8, window.innerWidth) / cardWidth * .8;
 		let drawButton = document.getElementById("draw-button");
 		let discardButton = document.getElementById("discard-button");
+		let discardAllButton = document.getElementById("discard-all-button");
 		drawButton.classList.remove("small");
-		drawButton.style.top = "20%";
+		drawButton.style.top = "40%";
 		
 		drawButton.style.width = 
-			drawButton.style.height = 
-			discardButton.style.width = 
+			drawButton.style.height = 30 + scaleFactor * 21;
+		discardButton.style.width = 
 			discardButton.style.height = 20 + scaleFactor * 14;
+		//discardAllButton.style.top = "80%";
 		
 		discardButton.classList.add("hidden");
-		for (let i in this.rondell) {
+		discardAllButton.classList.add("hidden");
+		if (this.rondell.length) {
 			discardButton.classList.remove("hidden");
-			
-			drawButton.style.top = (30 + scaleFactor * 10) + "%";
+		}
+		if (this.rondell.length > 1) {
+			discardAllButton.classList.remove("hidden");
+		}
+		
+		//discardAllButton.style.top = (63.5 + scaleFactor * 12) + "%";
+		
+		for (let i in this.rondell) {
+			drawButton.style.top = (35 + scaleFactor * 10) + "%";
+			drawButton.style.width = 
+				drawButton.style.height = (30 + scaleFactor * 21) * 0.7;
 			let card = this.rondell[i];
 			let cardDiv = document.querySelector("#card-" + card);
 			if (!cardDiv) {
 				cardDiv = this.createCard(card);
-				document.body.appendChild(cardDiv);
+				document.getElementById("card-area").appendChild(cardDiv);
 			}
 			if (i == 0) {
 				cardDiv.style.left = "50%";
@@ -124,10 +134,13 @@ let app = {
 					ratio = (i-1) / (this.rondell.length - 2);
 				}
 				cardDiv.style.left = (22 + ratio * 56) + "%";
-				cardDiv.style.top = (40 - Math.pow(Math.abs(0.5 - ratio) * 5, 2) + scaleFactor * 15) + "%";
+				cardDiv.style.top = (55 - Math.pow(Math.abs(0.5 - ratio) * 5, 2) + scaleFactor * 10) + "%";
 				cardDiv.style.zIndex = 100 - i;
 			}
 		}
+		
+		document.getElementById("draw-number").innerHTML = this.deck.length;
+		document.getElementById("discard-number").innerHTML = this.discard.length;
 	},
 	cardClick: function(evt) {
 		let cardId = +evt.target.dataset.id;
@@ -141,6 +154,10 @@ let app = {
 	drawCard: function(evt) {
 		if (this.deck.length == 0) {
 			this.reshuffleDiscard();
+			if (this.deck.length) {
+				window.setTimeout(this.drawCard.bind(this), 800);
+			}
+			return;
 		}
 		if (this.deck.length == 0) {
 			return;
@@ -159,7 +176,7 @@ let app = {
 		cardDiv.classList.add("flipped");
 		cardDiv.style.top = "10%";
 		cardDiv.style.left = "10%";
-		document.body.append(cardDiv);
+		document.getElementById("card-area").appendChild(cardDiv);
 		window.setTimeout(function(thisArg) {
 			cardDiv.style.transform = "translate(-50%, -50%)";
 			cardDiv.style.opacity = "1";
@@ -197,6 +214,40 @@ let app = {
 		this.rondell = [];
 		this.updateRondell();
 		this.saveState();
+	},
+	reshuffleDiscard: function() {
+		for (let i in this.discard) {
+			let app = this;
+			window.setTimeout(function() {
+				app.makeReshuffleCard(i);
+			}, i * 100 + Math.random() * 70);
+			
+		}
+		this.deck = this.deck.concat(this.discard);
+		this.discard = [];
+		this.shuffle(this.deck);
+		
+		this.updateRondell();
+	},
+	makeReshuffleCard: function() {
+		let card = this.createCard("back", 0, 0);
+		card.id = "";
+		card.dataset.id = "";
+		card.style.zIndex = -5;
+		card.style.pointerEvents = "none";
+		card.classList.add("flipped");
+		let discard = document.getElementById("discard-number");
+		document.getElementById("card-area").appendChild(card);
+		card.style.top = "80%";
+		card.style.left = 0;
+		card.style.opacity = 0;
+		window.setTimeout(function() {
+			card.style.top = "5%";
+			card.style.opacity = 1;
+		}, 100);
+		window.setTimeout(function() {
+			card.style.opacity = 0;
+		}, 600);
 	},
 	resizeWindow: function(evt) {
 		this.updateRondell();
