@@ -134,7 +134,7 @@ let app = {
 					ratio = (i-1) / (this.rondell.length - 2);
 				}
 				cardDiv.style.left = (22 + ratio * 56) + "%";
-				cardDiv.style.top = (54 - Math.pow(Math.abs(0.5 - ratio) * 5, 2) + scaleFactor * 10) + "%";
+				cardDiv.style.top = (60 - Math.pow(Math.abs(0.5 - ratio) * 5, 2) + scaleFactor * 8) + "%";
 				cardDiv.style.zIndex = 100 - i;
 			}
 		}
