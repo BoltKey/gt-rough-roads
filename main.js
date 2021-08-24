@@ -110,7 +110,7 @@ let app = {
 		//discardAllButton.style.top = (63.5 + scaleFactor * 12) + "%";
 		
 		for (let i in this.rondell) {
-			drawButton.style.top = (35 + scaleFactor * 10) + "%";
+			drawButton.style.top = (45 + scaleFactor * 6) + "%";
 			drawButton.style.width = 
 				drawButton.style.height = (30 + scaleFactor * 21) * 0.7;
 			let card = this.rondell[i];
@@ -134,7 +134,7 @@ let app = {
 					ratio = (i-1) / (this.rondell.length - 2);
 				}
 				cardDiv.style.left = (22 + ratio * 56) + "%";
-				cardDiv.style.top = (50 - Math.pow(Math.abs(0.5 - ratio) * 3, 2) + scaleFactor * 10) + "%";
+				cardDiv.style.top = (54 - Math.pow(Math.abs(0.5 - ratio) * 5, 2) + scaleFactor * 10) + "%";
 				cardDiv.style.zIndex = 100 - i;
 			}
 		}
