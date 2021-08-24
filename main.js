@@ -85,7 +85,7 @@ let app = {
 	},
 	updateRondell: function() {
 		let cardWidth = 300;
-		let scaleFactor = Math.min(window.innerHeight * .8, window.innerWidth) / cardWidth * .8;
+		let scaleFactor = Math.min(window.innerHeight * .6, window.innerWidth) / cardWidth * .8;
 		let drawButton = document.getElementById("draw-button");
 		let discardButton = document.getElementById("discard-button");
 		let discardAllButton = document.getElementById("discard-all-button");

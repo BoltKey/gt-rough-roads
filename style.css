@@ -168,7 +168,7 @@ button {
 #discard-button {
 	background: red;
 	transform: translate(-50%, -50%) scale(2);
-	left: 80%;
+	left: 91%;
 	top: 10%;
 }
 :is(#discard-button, #discard-all-button).hidden {
