@@ -143,7 +143,7 @@ body {
 
 button {
 	position: absolute;
-    font-size: 1.2rem;
+    font-size: 2rem;
     padding: 17px;
 	transition: top 1s, left 1s, transform 1s, width 1s, height 1s, opacity 1s;
 	z-index: 200;
@@ -177,7 +177,7 @@ button {
 
 #discard-all-button {
 	bottom: 6rem;
-	left: 19rem;
+	left: 25rem;
 	padding: 1rem;
 }
 
