@@ -13,9 +13,9 @@ body {
 
 #top-bar {
 	height: 10%;
-	background: rgba(200, 210, 50, 0.3);
-	border-bottom: solid rgba(200, 210, 50, 0.6) 5px;
-	position: relative;
+    background: rgba(200, 210, 190, 0.3);
+    border-bottom: solid #b18a76ba 5px;
+    position: relative;
 }
 
 #top-bar #logo {
@@ -145,28 +145,42 @@ button {
 	position: absolute;
     font-size: 2vw;
     padding: 17px;
-	transition: top 1s, left 1s, transform 1s, width 1s, height 1s, opacity 1s;
+	transition: top 1s, left 1s, transform .2s, width 1s, height 1s, opacity 1s;
 	z-index: 200;
 	padding: 0;
 	border-radius: 10000px;
+	border-color: #eb7134;
+}
+#draw-button:hover, #discard-button:hover {
+	transform: translate(-50%, -50%) scale(2.7);
+}
+#draw-button:active, #discard-button:active {
+	transform: translate(-50%, -50%) scale(2.3);
 }
 
-.card-wrap:hover {
+.card-wrap:hover  {
 	filter: drop-shadow(0px 0px 9px yellow);
 }
 
 #draw-button {
-	background: green;
-	transform: translate(-50%, -50%) scale(2.5);
-	left: 50%;
-	top: 20%;
+    background: url(images/plus-button.png);
+    background-size: cover;
+    border-radius: 0;
+    border: none;
+    transform: translate(-50%, -50%) scale(2.5);
+    left: 50%;
+    top: 20%;
 }
+
 #draw-button.small {
 	transform: translate(-50%, -50%);
 }
 
 #discard-button {
-	background: red;
+	background: url(images/x-button.png);
+    background-size: cover;
+    border-radius: 0;
+    border: none;
 	transform: translate(-50%, -50%) scale(2);
 	left: 91%;
 	top: 10%;
@@ -195,7 +209,7 @@ button {
     padding: 2vw;
     position: absolute;
     bottom: 25px;
-    font-size: 3.5vw;
+    font-size: min(30px, 3.5vw);
     margin: 6vw;
     opacity: 0;
     transition: opacity .5s;

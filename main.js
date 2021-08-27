@@ -16,6 +16,7 @@ let app = {
 		document.getElementById("discard-all-button").addEventListener("click", function(e) {this.discardAllClick()}.bind(this));
 		document.getElementById("reshuffle-discard-button").addEventListener("click", function(e) {this.reshuffleDiscard()}.bind(this));
 		document.getElementById("help-button").addEventListener("click", function(e) {document.getElementById("help-text").classList.toggle("visible")});
+		document.getElementById("help-text").addEventListener("click", function(e) {document.getElementById("help-text").classList.remove("visible")} );
 		
 		window.addEventListener('resize', function(e) {this.resizeWindow()}.bind(this));
 		
