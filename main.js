@@ -5,11 +5,27 @@
 let app = {
 	main: function() {
 		console.log("main");
+		document.getElementById("loading").remove();
 		let lang = localStorage.getItem("language") || "en";
 		this.currLanguage = cardTexts[lang] || cardTexts.en;
 		this.deck = JSON.parse(localStorage.getItem("deck")) || [0, 1, 2, 3, 4, 5, 6];
 		this.rondell = JSON.parse(localStorage.getItem("rondell")) || [];
 		this.discard = JSON.parse(localStorage.getItem("discard")) || [];
+		
+		for (let name of ['draw-button', 'discard-button', 'discard-all-button', 'reshuffle-discard-button', 'help-button']) {
+			let button = document.createElement("button");
+			button.id = name;
+			if (name == 'discard-all-button') {
+				button.innerHTML = "Discard all";
+			}
+			if (name == 'reshuffle-discard-button') {
+				button.innerHTML = "Reshuffle discard";
+			}
+			if (name == 'help-button') {
+				button.innerHTML = "?";
+			}
+			document.getElementById("card-area").appendChild(button);
+		}
 		
 		document.getElementById("draw-button").addEventListener("click", function(e) {this.drawCard()}.bind(this), this);
 		document.getElementById("discard-button").addEventListener("click", function(e) {this.discardClick()}.bind(this));
@@ -17,6 +33,8 @@ let app = {
 		document.getElementById("reshuffle-discard-button").addEventListener("click", function(e) {this.reshuffleDiscard()}.bind(this));
 		document.getElementById("help-button").addEventListener("click", function(e) {document.getElementById("help-text").classList.toggle("visible")});
 		document.getElementById("help-text").addEventListener("click", function(e) {document.getElementById("help-text").classList.remove("visible")} );
+		
+		
 		
 		window.addEventListener('resize', function(e) {this.resizeWindow()}.bind(this));
 		
