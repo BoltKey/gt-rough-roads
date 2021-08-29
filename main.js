@@ -272,4 +272,4 @@ let app = {
 		this.updateRondell();
 	}
 }
-document.onload = function() {app.main()};
+window.onload = function() {app.main()};
