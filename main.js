@@ -273,7 +273,7 @@ let app = {
 	}
 }
 function preloadPictures() {
-	for (let name in ["plus-button.png", "x-button.png", "card-background.jpg", "card-back.jpg"]) {
+	for (let name of ["plus-button.png", "x-button.png", "card-background.jpg", "card-back.jpg"]) {
 		let img = new Image();
 		img.src = "images/" + name;
 	}
