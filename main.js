@@ -272,10 +272,12 @@ let app = {
 		this.updateRondell();
 	}
 }
+var images = [];
 function preloadPictures() {
 	for (let name of ["plus-button.png", "x-button.png", "card-background.jpg", "card-back.jpg"]) {
-		let img = new Image();
+		var img = new Image();
 		img.src = "images/" + name;
+		images.push(img);
 	}
 }
 preloadPictures();
