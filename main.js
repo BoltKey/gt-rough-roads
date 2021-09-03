@@ -12,6 +12,10 @@ let app = {
 		this.rondell = JSON.parse(localStorage.getItem("rondell")) || [];
 		this.discard = JSON.parse(localStorage.getItem("discard")) || [];
 		
+		if (!localStorage.getItem("rondell")) {
+			document.getElementById("help-text").classList.add("visible");
+		}
+		
 		for (let name of ['draw-button', 'discard-button', 'discard-all-button', 'reshuffle-discard-button', 'help-button']) {
 			let button = document.createElement("button");
 			button.id = name;
@@ -23,8 +27,11 @@ let app = {
 			}
 			if (name == 'help-button') {
 				button.innerHTML = "?";
+				document.getElementById("top-bar").appendChild(button);
 			}
-			document.getElementById("card-area").appendChild(button);
+			else {
+				document.getElementById("card-area").appendChild(button);
+			}
 		}
 		
 		document.getElementById("draw-button").addEventListener("click", function(e) {this.drawCard()}.bind(this), this);
@@ -38,6 +45,7 @@ let app = {
 		
 		window.addEventListener('resize', function(e) {this.resizeWindow()}.bind(this));
 		
+		this.resizeWindow();
 		this.updateRondell();
 	},
 
@@ -103,6 +111,7 @@ let app = {
 		return a;
 	},
 	updateRondell: function() {
+		
 		let cardWidth = 300;
 		let scaleFactor = Math.min(window.innerHeight * .6, window.innerWidth) / cardWidth * .8;
 		let drawButton = document.getElementById("draw-button");
@@ -129,9 +138,11 @@ let app = {
 		//discardAllButton.style.top = (63.5 + scaleFactor * 12) + "%";
 		
 		for (let i in this.rondell) {
-			drawButton.style.top = (45 + scaleFactor * 6) + "%";
+			drawButton.style.top = (40 + 
+				scaleFactor * 6 + 
+				Math.min(this.rondell.length, 5) * 1) + "%";
 			drawButton.style.width = 
-				drawButton.style.height = (30 + scaleFactor * 21) * 0.7;
+				drawButton.style.height = (30 + scaleFactor * 17) * 0.7;
 			let card = this.rondell[i];
 			let cardDiv = document.querySelector("#card-" + card);
 			if (!cardDiv) {
@@ -142,15 +153,28 @@ let app = {
 				cardDiv.style.left = "50%";
 				cardDiv.style.top = (20 + scaleFactor * 4) + "%";
 				cardDiv.style.transform = "translate(-50%, -50%) scale(" + scaleFactor * 1.2 + ")";
+				/*let rect = cardDiv.getBoundingClientRect();
+				document.getElementById("discard-button").style.left = rect.right;
+				document.getElementById("discard-button").style.top = rect.top;*/
 			}
 			else {
-				cardDiv.style.transform = "translate(-50%, -50%) scale(" + (scaleFactor * .5) + ")";
+				let scaleMult = [0, 0, 1, 0.8, 0.6][this.rondell.length] || 0.5;
+				if (this.rondell.length == 2) {
+					scaleMult = 1;
+				}
+				if (this.rondell.length == 3) {
+					scaleMult = 0.8;
+				}
+				cardDiv.style.transform = "translate(-50%, -50%) scale(" + (scaleFactor * scaleMult) + ")";
 				let ratio;
 				if (this.rondell.length == 2) {
 					ratio = 0.5
 				}
 				else {
 					ratio = (i-1) / (this.rondell.length - 2);
+				}
+				if (this.rondell.length == 3) {
+					ratio += 0.1 * (ratio < 0.5 ? 1 : -1);
 				}
 				cardDiv.style.left = (22 + ratio * 56) + "%";
 				cardDiv.style.top = (60 - Math.pow(Math.abs(0.5 - ratio) * 5, 2) + scaleFactor * 8) + "%";
@@ -162,6 +186,7 @@ let app = {
 		document.getElementById("discard-number").innerHTML = this.discard.length;
 	},
 	cardClick: function(evt) {
+		document.getElementById("help-text").classList.remove("visible");
 		let cardId = +evt.target.dataset.id;
 		console.log("click card", cardId);
 		let cardIndex = this.rondell.indexOf(cardId);
@@ -171,6 +196,7 @@ let app = {
 		this.saveState();
 	},
 	drawCard: function(evt) {
+		document.getElementById("help-text").classList.remove("visible");
 		if (this.deck.length == 0) {
 			this.reshuffleDiscard();
 			if (this.deck.length) {
@@ -216,6 +242,7 @@ let app = {
 		
 		cardDiv.style.opacity = 0;
 		cardDiv.style.top = "100%";
+		cardDiv.style.left = "0%";
 		window.setTimeout(function() {cardDiv.remove();}, 500);
 		this.updateRondell();
 		this.saveState();
@@ -226,6 +253,7 @@ let app = {
 			window.setTimeout(function() {
 				cardDiv.style.opacity = 0;
 				cardDiv.style.top = "100%";
+				cardDiv.style.left = "0%";
 			}, Math.random() * 300);
 			window.setTimeout(function() {cardDiv.remove();}, 600);
 			this.discard.push(c);
@@ -270,15 +298,14 @@ let app = {
 	},
 	resizeWindow: function(evt) {
 		this.updateRondell();
+		let aspect = window.innerWidth / window.innerHeight;
+		let cutoff = 1.333;
+		if (aspect > cutoff) {
+			document.body.style.width = window.innerHeight * cutoff + "px";
+		}
+		else {
+			document.body.style.width = "";
+		}
 	}
 }
-var images = [];
-function preloadPictures() {
-	for (let name of ["plus-button.png", "x-button.png", "card-background.jpg", "card-back.jpg"]) {
-		var img = new Image();
-		img.src = "images/" + name;
-		images.push(img);
-	}
-}
-preloadPictures();
 window.onload = function() {app.main()};
