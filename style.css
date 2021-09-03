@@ -196,8 +196,8 @@ button {
 }
 
 #reshuffle-discard-button {
-	bottom: 6vw;
-	left: 8vw;
+	top: 1.5%;
+    left: 11%;
 	padding: 1vw;
 }
 
