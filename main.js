@@ -7,10 +7,12 @@ let app = {
 		console.log("main");
 		document.getElementById("loading").remove();
 		let lang = localStorage.getItem("language") || "en";
-		this.currLanguage = cardTexts[lang] || cardTexts.en;
+		this.currLanguage = strings[lang] || strings.en;
 		this.deck = JSON.parse(localStorage.getItem("deck")) || [0, 1, 2, 3, 4, 5, 6];
 		this.rondell = JSON.parse(localStorage.getItem("rondell")) || [];
 		this.discard = JSON.parse(localStorage.getItem("discard")) || [];
+		
+		this.fillHelp();
 		
 		if (!localStorage.getItem("rondell")) {
 			document.getElementById("help-text").classList.add("visible");
@@ -39,6 +41,10 @@ let app = {
 		document.getElementById("discard-all-button").addEventListener("click", function(e) {this.discardAllClick()}.bind(this));
 		document.getElementById("reshuffle-discard-button").addEventListener("click", function(e) {this.reshuffleDiscard()}.bind(this));
 		document.getElementById("help-button").addEventListener("click", function(e) {document.getElementById("help-text").classList.toggle("visible")});
+		document.getElementById("title-page").addEventListener("click", function(e) {
+			document.getElementById("title-page").style.opacity = 0;
+			window.setTimeout(function() {document.getElementById("title-page").remove()}, 1000);
+		});
 		document.getElementById("help-text").addEventListener("click", function(e) {document.getElementById("help-text").classList.remove("visible")} );
 		
 		
@@ -48,6 +54,19 @@ let app = {
 		this.resizeWindow();
 		this.updateRondell();
 	},
+	
+	fillHelp: function() {
+		let helpDiv = document.getElementById("help-text");
+		let i = 0;
+		this.currLanguage.help[this.currLanguage.help.length - 1] = 
+			this.currLanguage.help[this.currLanguage.help.length - 1].replace(
+				"[random_extra_hint]", 
+				this.currLanguage.hints[Math.floor(Math.random() * this.currLanguage.hints.length)]
+			)
+		for (let helpNode of helpDiv.children) {
+			helpNode.innerHTML = this.currLanguage.help[i++];
+		}
+	},
 
 	createCard: function(id, headerText, paragraphText) {
 		let oldCard;
@@ -56,8 +75,8 @@ let app = {
 		}
 		let cardWrap = document.createElement("div");
 		if (id != "back") {
-			headerText = this.currLanguage[id][0];
-			paragraphText = this.currLanguage[id][1];
+			headerText = this.currLanguage.cards[id][0];
+			paragraphText = this.currLanguage.cards[id][1];
 			cardWrap.id = "card-" + id;
 		}
 		cardWrap.classList.add("card-wrap");
@@ -200,7 +219,7 @@ let app = {
 		if (this.deck.length == 0) {
 			this.reshuffleDiscard();
 			if (this.deck.length) {
-				window.setTimeout(this.drawCard.bind(this), 800);
+				window.setTimeout(this.drawCard.bind(this), 1000);
 			}
 			return;
 		}
@@ -226,7 +245,7 @@ let app = {
 			cardDiv.style.transform = "translate(-50%, -50%)";
 			cardDiv.style.opacity = "1";
 			thisArg.updateRondell();
-		}, 0, this);
+		}, 50, this);
 		window.setTimeout(function() {
 			cardDiv.classList.remove("flipped");
 		}, 800);
@@ -267,7 +286,7 @@ let app = {
 			let app = this;
 			window.setTimeout(function() {
 				app.makeReshuffleCard(i);
-			}, i * 100 + Math.random() * 70);
+			}, i * 50 + Math.random() * 70);
 			
 		}
 		this.deck = this.deck.concat(this.discard);

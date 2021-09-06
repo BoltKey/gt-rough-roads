@@ -3,44 +3,98 @@
 	src: url("fonts/amorpheusregular.otf");
 }
 
+#title-page {
+    background: url(images/background-title.png);
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s;
+    opacity: 1;
+    position: absolute;
+    z-index: 500;
+}
+#title-page button {
+    bottom: 5%;
+    left: 50%;
+    width: 38%;
+    height: 8%;
+    font-size: 3em;
+}
+
+#title-ship {
+	background: url(images/ship-title.png);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    /* z-index: 550; */
+    background-position: center;
+	background-repeat: no-repeat;
+}
+#title-text {
+	background: url(images/logo-en.png);
+    width: 100%;
+    height: 36%;
+    background-size: contain;
+    /* z-index: 550; */
+    background-position: center;
+	background-repeat: no-repeat;
+	position: absolute;
+}
+
 body {
-	background-image: url(images/background.jpg);
+	background-image: url(images/background.png);
 	overflow: hidden;
 	background-size: cover;
 	margin: auto;
 	
 }
 
+h1, h2 {
+	font-family: orgovan-rounded-web, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
 #top-bar {
-	height: 10%;
-    background: rgba(200, 210, 190, 0.3);
-    border-bottom: solid #b18a76ba 5px;
+    height: 10%;
+    background: url(images/headline.png);
+    /* border-bottom: solid #b18a76ba 5px; */
     position: relative;
+    background-size: 100% 100%;
+	
 }
 
 #top-bar #logo {
-	width: 100%;
-	height: 100%;
-	background-image: url(images/logo-en.png);
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
-}
-
-#top-bar #cge-logo {
-    height: 100%;
-    width: 20%;
-    background: url(images/cge-logo.jpg);
+    top: 50%;
+    left: 50%;
     position: absolute;
-    top: 0;
-    left: 20px;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    /* background-image: url(images/logo-en.png); */
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-	transition: transform .2s;
+    text-align: center;
+    font-size: 4em;
+    font-family: orgovan-rounded-web, sans-serif;
 }
 
-#top-bar #cge-logo:hover {
+#cge-logo {
+    height: 9em;
+    width: 15em;
+    background: url(images/cge-logo.jpg);
+    position: absolute;
+    /* left: 0; */
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform .2s;
+    /* margin: -3px; */
+    margin: auto;
+    bottom: 5%;
+    left: 5%;
+}
+
+#cge-logo:hover {
 	transform: scale(1.2);
 }
 
@@ -203,9 +257,15 @@ button {
 
 #help-text {
     color: white;
-    background: rgba(50, 80, 240, 0.85);
-    border: solid blue 5px;
-    border-radius: 2vw;
+    
+	/*background: rgba(92, 30, 169, 0.65);
+	border: solid 2px rgba(138, 62, 255, 1);
+	border-radius: 13px;*/
+	
+	background: rgb(9 41 72 / 87%);
+	border: solid 4px rgba(59, 97, 168, 1);
+    border-radius: 4px;
+	
     padding: 2vw;
     position: absolute;
     top: 25px;
@@ -220,6 +280,29 @@ button {
 	opacity: 1;
 	pointer-events: all;
 }
+#help-text * {
+	text-align: center;
+	margin: 0;
+}
+#help-text :is(h1, .footnote) {
+	color: rgba(242, 203, 23);
+}
+#help-text h1 {
+    font-size: 2.4em;
+	line-height: 1.01;
+	margin: 37px 0;
+}
+#help-text h2 {
+    font-size: 1.3em;
+	margin: 20px 0;
+}
+#help-text div {
+    margin: 20px 0;
+	font-size: 1.2em;
+	font-family: roboto, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
 
 button#help-button {
 	position: absolute;
@@ -231,3 +314,4 @@ button#help-button {
     right: 5%;
     margin: auto auto;
 }
+
