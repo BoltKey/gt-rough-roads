@@ -257,15 +257,9 @@ button {
 
 #help-text {
     color: white;
-    
-	/*background: rgba(92, 30, 169, 0.65);
-	border: solid 2px rgba(138, 62, 255, 1);
-	border-radius: 13px;*/
-	
-	background: rgb(9 41 72 / 87%);
-	border: solid 4px rgba(59, 97, 168, 1);
+    background: rgb(9 41 72 / 87%);
+    border: solid 4px rgba(59, 97, 168, 1);
     border-radius: 4px;
-	
     padding: 2vw;
     position: absolute;
     top: 25px;
@@ -275,6 +269,8 @@ button {
     transition: opacity .5s;
     z-index: 220;
     pointer-events: none;
+    max-height: 83%;
+    overflow: auto;
 }
 #help-text.visible {
 	opacity: 1;
