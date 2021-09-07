@@ -8,9 +8,14 @@ let app = {
 		document.getElementById("loading").remove();
 		let lang = localStorage.getItem("language") || "en";
 		this.currLanguage = strings[lang] || strings.en;
-		this.deck = JSON.parse(localStorage.getItem("deck")) || [0, 1, 2, 3, 4, 5, 6];
+		let cardPool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+		this.deck = JSON.parse(localStorage.getItem("deck")) || cardPool;
 		this.rondell = JSON.parse(localStorage.getItem("rondell")) || [];
 		this.discard = JSON.parse(localStorage.getItem("discard")) || [];
+		
+		let allCards = this.deck.concat(this.rondell).concat(this.discard);
+		let newCards = cardPool.filter(x => !allCards.includes(x));
+		this.deck = this.deck.concat(newCards);
 		
 		this.fillHelp();
 		
@@ -86,16 +91,20 @@ let app = {
 		
 		let front = document.createElement("div");
 		front.classList.add("card-front");
-		let header = document.createElement("h2");
+		front.classList.add("card-" + id);
+		
+		front.style.backgroundImage = "url(images/cards/GT2-new_Rough_Road_EN_0" + id + ".png)";
+		
+		/*let header = document.createElement("h2");
 		header.innerHTML = headerText;
 		let image = document.createElement("div");
 		image.classList.add("card-image");
 		let body = document.createElement("p");
-		body.innerHTML = paragraphText;
+		body.innerHTML = paragraphText;*/
 		
-		front.appendChild(header);
+		/*front.appendChild(header);
 		front.appendChild(image);
-		front.appendChild(body);
+		front.appendChild(body);*/
 		
 		let back = document.createElement("div");
 		back.classList.add("card-back");
