@@ -11,6 +11,7 @@ let app = {
 		catch {
 			// sorry
 		}
+		this.noSleep = new NoSleep();
 		let lang = localStorage.getItem("language") || "en";
 		this.currLanguage = strings[lang] || strings.en;
 		let cardPool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -241,6 +242,9 @@ let app = {
 		dataLayer.push({'event': 'card-click', "cardId": cardId});
 		this.updateRondell();
 		this.saveState();
+		
+		this.noSleep.enable();
+		
 	},
 	drawCard: function(evt) {
 		document.getElementById("help-text").classList.remove("visible");
