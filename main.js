@@ -174,8 +174,8 @@ let app = {
 		//discardAllButton.style.top = (63.5 + scaleFactor * 12) + "%";
 		
 		for (let i in this.rondell) {
-			drawButton.style.top = (44 + 
-				scaleFactor * 4 + 
+			drawButton.style.top = (48 + 
+				scaleFactor * 2 + 
 				Math.min(this.rondell.length, 5) * 0.7) + "%";
 			drawButton.style.width = 
 				drawButton.style.height = (30 + scaleFactor * 17) * 0.7;
