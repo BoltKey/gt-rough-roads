@@ -290,12 +290,11 @@ button {
     position: absolute;
     /* top: 25px; */
     font-size: min(30px, 3.5vw);
-    margin: 6vw;
-    margin-top: 10%;
+    margin: 10%;
     opacity: 1;
     transition: opacity .5s;
     z-index: 220;
-    max-height: 80%;
+    max-height: 71%;
     overflow: auto;
 }
 :is(#help-text, #help-wrap).visible {
