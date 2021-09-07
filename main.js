@@ -13,6 +13,10 @@ let app = {
 		this.rondell = JSON.parse(localStorage.getItem("rondell")) || [];
 		this.discard = JSON.parse(localStorage.getItem("discard")) || [];
 		
+		this.deck = this.deck.filter(x => !cardPool.includes(x));
+		this.rondell = this.rondell.filter(x => !cardPool.includes(x));
+		this.discard = this.discard.filter(x => !cardPool.includes(x));
+		
 		let allCards = this.deck.concat(this.rondell).concat(this.discard);
 		let newCards = cardPool.filter(x => !allCards.includes(x));
 		this.deck = this.deck.concat(newCards);
