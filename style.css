@@ -320,15 +320,15 @@ button {
 }
 #help-text div {
     margin: 20px 0;
-	font-size: 1.2em;
-	font-family: roboto, sans-serif;
-	font-weight: 400;
-	font-style: normal;
+    font-size: 0.8em;
+    font-family: roboto, sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 button#help-button {
     position: absolute;
-    padding: 2vw;
+    padding: 5px;
     background: #6262d3;
     z-index: 201;
     top: 50%;
