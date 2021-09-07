@@ -101,7 +101,7 @@ h1, h2 {
 
 #draw-number, #discard-number {
     width: 10%;
-    font-size: xxx-large;
+    font-size: -webkit-xxx-large;
     text-align: center;
     position: absolute;
     left: 2%;
