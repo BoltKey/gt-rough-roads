@@ -4,8 +4,8 @@
 
 let app = {
 	main: function() {
-		console.log("main");
 		document.getElementById("loading").remove();
+		screen.orientation.lock('landscape');
 		let lang = localStorage.getItem("language") || "en";
 		this.currLanguage = strings[lang] || strings.en;
 		let cardPool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -215,6 +215,12 @@ let app = {
 		}
 		
 		document.getElementById("draw-number").innerHTML = this.deck.length;
+		if (this.deck.length) {
+			document.getElementById("draw-number").classList.remove("no-cards");
+		}
+		else {
+			document.getElementById("draw-number").classList.add("no-cards");
+		}
 		document.getElementById("discard-number").innerHTML = this.discard.length;
 	},
 	cardClick: function(evt) {

@@ -125,6 +125,9 @@ h1, h2 {
     color: white;
     border-radius: 7px;
 }
+div#draw-number.no-cards {
+    background: none;
+}
 
 #draw-number, #discard-number {
 	font-family: roboto, sans-serif;
