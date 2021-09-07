@@ -15,11 +15,11 @@
 #title-page button {
     bottom: 5%;
     left: 50%;
-    width: 38%;
-    height: 8%;
+    /* width: 38%; */
+    /* height: 8%; */
     font-size: 3em;
+    padding: 25px;
 }
-
 #title-ship {
 	background: url(images/ship-title.png);
     width: 100%;
