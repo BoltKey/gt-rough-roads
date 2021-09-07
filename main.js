@@ -214,7 +214,7 @@ let app = {
 					ratio += 0.1 * (ratio < 0.5 ? 1 : -1);
 				}
 				cardDiv.style.left = (22 + ratio * 56) + "%";
-				cardDiv.style.top = (60 - Math.pow(Math.abs(0.5 - ratio) * 5, 2) + scaleFactor * 8) + "%";
+				cardDiv.style.top = (65 - Math.pow(Math.abs(0.5 - ratio) * 4, 2) + scaleFactor * 6) + "%";
 				cardDiv.style.zIndex = 100 - i;
 			}
 		}
