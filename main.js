@@ -5,7 +5,12 @@
 let app = {
 	main: function() {
 		document.getElementById("loading").remove();
-		screen.orientation.lock('landscape');
+		try {
+			screen.orientation.lock('landscape');
+		}
+		catch {
+			// sorry
+		}
 		let lang = localStorage.getItem("language") || "en";
 		this.currLanguage = strings[lang] || strings.en;
 		let cardPool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
