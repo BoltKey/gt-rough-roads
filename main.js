@@ -32,7 +32,7 @@ let app = {
 			document.getElementById("help-text").classList.add("visible");
 		}
 		
-		for (let name of ['draw-button', 'discard-button', 'discard-all-button', 'reshuffle-discard-button', 'help-button']) {
+		for (let name of ['draw-button', 'discard-all-button', 'reshuffle-discard-button', 'help-button']) {
 			let button = document.createElement("button");
 			button.id = name;
 			if (name == 'discard-all-button') {
@@ -51,7 +51,6 @@ let app = {
 		}
 		
 		document.getElementById("draw-button").addEventListener("click", function(e) {this.drawCard()}.bind(this), this);
-		document.getElementById("discard-button").addEventListener("click", function(e) {this.discardClick()}.bind(this));
 		document.getElementById("discard-all-button").addEventListener("click", function(e) {this.discardAllClick()}.bind(this));
 		document.getElementById("reshuffle-discard-button").addEventListener("click", function(e) {this.reshuffleDiscard()}.bind(this));
 		document.getElementById("help-button").addEventListener("click", function(e) {document.getElementById("help-text").classList.toggle("visible")});
@@ -104,6 +103,12 @@ let app = {
 		
 		front.style.backgroundImage = "url(images/cards/GT2-new_Rough_Road_EN_0" + id + ".png)";
 		
+		let xButton = document.createElement("button");
+		xButton.classList.add("discard-button");
+		xButton.dataset.cardId = id;
+		xButton.addEventListener("click", function(e) {this.discardClick(e)}.bind(this));
+		front.appendChild(xButton);
+		
 		/*let header = document.createElement("h2");
 		header.innerHTML = headerText;
 		let image = document.createElement("div");
@@ -152,22 +157,15 @@ let app = {
 		let cardWidth = 300;
 		let scaleFactor = Math.min(window.innerHeight * .6, window.innerWidth) / cardWidth * .8;
 		let drawButton = document.getElementById("draw-button");
-		let discardButton = document.getElementById("discard-button");
 		let discardAllButton = document.getElementById("discard-all-button");
 		drawButton.classList.remove("small");
 		drawButton.style.top = "40%";
 		
 		drawButton.style.width = 
 			drawButton.style.height = 30 + scaleFactor * 21;
-		discardButton.style.width = 
-			discardButton.style.height = 20 + scaleFactor * 14;
 		//discardAllButton.style.top = "80%";
 		
-		discardButton.classList.add("hidden");
 		discardAllButton.classList.add("hidden");
-		if (this.rondell.length) {
-			discardButton.classList.remove("hidden");
-		}
 		if (this.rondell.length > 1) {
 			discardAllButton.classList.remove("hidden");
 		}
@@ -231,6 +229,9 @@ let app = {
 	cardClick: function(evt) {
 		document.getElementById("help-text").classList.remove("visible");
 		let cardId = +evt.target.dataset.id;
+		if (!cardId) {
+			return;
+		}
 		console.log("click card", cardId);
 		let cardIndex = this.rondell.indexOf(cardId);
 		this.rondell[cardIndex] = this.rondell[0];
@@ -279,7 +280,8 @@ let app = {
 		if (this.rondell.length == 0) {
 			return;
 		}
-		let cardId = this.rondell.shift();
+		let cardId = +evt.target.dataset.cardId;//this.rondell.shift();
+		this.rondell.splice(this.rondell.indexOf(cardId), 1);
 		this.discard.push(cardId);
 		let cardDiv = document.getElementById("card-" + cardId);
 		

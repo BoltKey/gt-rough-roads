@@ -45,7 +45,7 @@ body {
 	overflow: hidden;
 	background-size: cover;
 	margin: auto;
-	
+	position: relative;
 }
 
 h1, h2 {
@@ -149,9 +149,9 @@ div#draw-number.no-cards {
 	position: absolute;
 }
 
-.card-wrap * {
+/*.card-wrap * {
 	pointer-events: none;
-}
+}*/
 
 .card-front {
     background: url(images/card-background.jpg);
@@ -225,11 +225,12 @@ button {
 	padding: 0;
 	border-radius: 10000px;
 	border-color: #eb7134;
+	background: azure;
 }
-#draw-button:hover, #discard-button:hover {
+#draw-button:hover, .discard-button:hover {
 	transform: translate(-50%, -50%) scale(2.7);
 }
-#draw-button:active, #discard-button:active {
+#draw-button:active, .discard-button:active {
 	transform: translate(-50%, -50%) scale(2.3);
 }
 
@@ -251,16 +252,20 @@ button {
 	transform: translate(-50%, -50%);
 }
 
-#discard-button {
-	background: url(images/x-button.png);
-    background-size: cover;
+.discard-button {
+    background: url(images/x-button.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 0;
     border: none;
-	transform: translate(-50%, -50%) scale(2);
-	right: calc(35% - 200px);
-	top: 10%;
+    transform: translate(-50%, -50%) scale(2);
+    right: -2%;
+    top: 7%;
+    width: 7%;
+    height: 10%;
 }
-:is(#discard-button, #discard-all-button).hidden {
+:is(.discard-button, #discard-all-button).hidden {
 	opacity: 0;
 }
 
