@@ -238,6 +238,7 @@ let app = {
 		let cardIndex = this.rondell.indexOf(cardId);
 		this.rondell[cardIndex] = this.rondell[0];
 		this.rondell[0] = cardId;
+		dataLayer.push({'event': 'card-click', "cardId": cardId});
 		this.updateRondell();
 		this.saveState();
 	},
