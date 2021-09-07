@@ -282,6 +282,8 @@ let app = {
 			cardDiv.classList.remove("flipped");
 		}, 800);
 		this.saveState();
+		
+		this.noSleep.enable();
 	},
 	discardClick: function(evt) {
 		if (this.rondell.length == 0) {
