@@ -108,6 +108,7 @@ let app = {
 		xButton.dataset.cardId = id;
 		xButton.addEventListener("click", function(e) {this.discardClick(e)}.bind(this));
 		front.appendChild(xButton);
+		front.dataset.id = id;
 		
 		/*let header = document.createElement("h2");
 		header.innerHTML = headerText;
@@ -173,9 +174,9 @@ let app = {
 		//discardAllButton.style.top = (63.5 + scaleFactor * 12) + "%";
 		
 		for (let i in this.rondell) {
-			drawButton.style.top = (40 + 
-				scaleFactor * 6 + 
-				Math.min(this.rondell.length, 5) * 1) + "%";
+			drawButton.style.top = (44 + 
+				scaleFactor * 4 + 
+				Math.min(this.rondell.length, 5) * 0.7) + "%";
 			drawButton.style.width = 
 				drawButton.style.height = (30 + scaleFactor * 17) * 0.7;
 			let card = this.rondell[i];

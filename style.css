@@ -288,14 +288,15 @@ button {
     border-radius: 4px;
     padding: 2vw;
     position: absolute;
-    top: 25px;
+    /* top: 25px; */
     font-size: min(30px, 3.5vw);
     margin: 6vw;
+    margin-top: 10%;
     opacity: 0;
     transition: opacity .5s;
     z-index: 220;
     pointer-events: none;
-    max-height: 83%;
+    max-height: 67%;
     overflow: auto;
 }
 #help-text.visible {
