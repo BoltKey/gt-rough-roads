@@ -1,22 +1,27 @@
 const strings = {
 	en: {
 		cards: [
-			["Paranoia", "Anyone who wants to land on a Planet first takes heavy cannon fire from the front."],
-			["Panic", "Any time a cabin has an exposed connector, its crew (alien or human) leaves the ship."],
-			["Placeholder 1", "Lorem ipsum lorem ipsum."],
-			["Placeholder 2", "Lorem ipsum lorem ipsum."],
-			["Placeholder 3", "Lorem ipsum lorem ipsum."],
-			["Placeholder 4", "Lorem ipsum lorem ipsum."],
-			["Placeholder 5", "Lorem ipsum lorem ipsum."],
-			["Placeholder 6", "Lorem ipsum lorem ipsum."],
-			["Placeholder 6", "Lorem ipsum lorem ipsum."],
-			["Placeholder 6", "Lorem ipsum lorem ipsum."],
-			["Placeholder 6", "Lorem ipsum lorem ipsum."],
-			["Placeholder 6", "Lorem ipsum lorem ipsum."],
-			["Placeholder 6", "Lorem ipsum lorem ipsum."],
-			["Placeholder 6", "Lorem ipsum lorem ipsum."],
-			["Placeholder 6", "Lorem ipsum lorem ipsum."],
-			["Placeholder 6", "Lorem ipsum lorem ipsum."],
+			["blank", "blank"],
+			
+			["Paranoid Locals", "Anyone who wants to land on a Planet first takes heavy cannon fire from the front."],
+			["Cosmic psychosis", "Any time a cabin has an exposed connector, its crew (alien or human) leaves the ship."],
+			["Meteoric Inversion", "Lorem ipsum lorem ipsum."],
+			["Remorseless Fate", "Lorem ipsum lorem ipsum."],
+			["Big Baddies", "Lorem ipsum lorem ipsum."],
+			
+			["Piercing Projectiles", "Lorem ipsum lorem ipsum.", "<ul><li> First give up all crew member (incl. aliens), then their cabins. </li><li>Cabins lost by any way are returned to the pile, not to your lost components.</li>"],
+			["Union Ship", "Lorem ipsum lorem ipsum."],
+			["Bad Luck", "Lorem ipsum lorem ipsum."],
+			["Nasty Surprise", "Lorem ipsum lorem ipsum."],
+			["Infected Goods", "Lorem ipsum lorem ipsum."],
+			
+			["Defective Connectors", "Lorem ipsum lorem ipsum."],
+			["Space Junk", "Lorem ipsum lorem ipsum.", '<ul><li>Please note this applies only to component that fall off (because not connected to the ship anymore, or because of an effect that specifically says "fall off"). Destroyed or given up component do not count. </li><li> When evaluating a card, keep components that fall off on a separate pile.</li><li> After the entire card is evaluated, evaluate the "fall off" piles of the players, in flight order: for each component in the player`s pile, all players behind him roll for a big meteor from the frint. Note this may add components to their "fall off" piles.</li>'],
+			["Sommersault", "Lorem ipsum lorem ipsum."],
+			["Dead Zone", "Lorem ipsum lorem ipsum."],
+			["Metal Fatique", "Lorem ipsum lorem ipsum."],
+			
+			//["Placeholder 6", "Lorem ipsum lorem ipsum."],
 			
 		],
 		help: ["Welcome to the Rough Roads", 

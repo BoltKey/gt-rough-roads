@@ -53,12 +53,13 @@ let app = {
 		document.getElementById("draw-button").addEventListener("click", function(e) {this.drawCard()}.bind(this), this);
 		document.getElementById("discard-all-button").addEventListener("click", function(e) {this.discardAllClick()}.bind(this));
 		document.getElementById("reshuffle-discard-button").addEventListener("click", function(e) {this.reshuffleDiscard()}.bind(this));
-		document.getElementById("help-button").addEventListener("click", function(e) {document.getElementById("help-text").classList.toggle("visible")});
+		document.getElementById("help-button").addEventListener("click", function(e) {		document.getElementById("help-wrap").classList.toggle("visible");
+		});
 		document.getElementById("title-page").addEventListener("click", function(e) {
 			document.getElementById("title-page").style.opacity = 0;
 			window.setTimeout(function() {document.getElementById("title-page").remove()}, 1000);
 		});
-		document.getElementById("help-text").addEventListener("click", function(e) {document.getElementById("help-text").classList.remove("visible")} );
+		document.getElementById("help-wrap").addEventListener("click", function(e) {document.getElementById("help-wrap").classList.remove("visible")} );
 		
 		
 		
