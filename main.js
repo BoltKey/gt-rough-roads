@@ -207,7 +207,7 @@ let app = {
 		}
 		
 		drawButton.classList.add("hidden");
-		if (this.deck.length >= 1) {
+		if (this.deck.length >= 1 || this.discard.length >= 1) {
 			drawButton.classList.remove("hidden");
 		}
 		
