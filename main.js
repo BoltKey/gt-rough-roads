@@ -67,7 +67,6 @@ let app = {
 				button.innerHTML = "Reshuffle discard";
 			}
 			if (name == 'help-button') {
-				button.innerHTML = "?";
 				document.getElementById("top-bar").appendChild(button);
 			}
 			else {
@@ -182,7 +181,7 @@ let app = {
 	},
 	updateRondell: function() {
 		
-		let cardWidth = 300;
+		let cardWidth = 1219;
 		let scaleFactor = Math.min(window.innerHeight * .6, window.innerWidth) / cardWidth * .8;
 		let drawButton = document.getElementById("draw-button");
 		let discardAllButton = document.getElementById("discard-all-button");
@@ -207,11 +206,11 @@ let app = {
 		//discardAllButton.style.top = (63.5 + scaleFactor * 12) + "%";
 		
 		for (let i in this.rondell) {
-			drawButton.style.top = (52 + 
+			drawButton.style.top = (48 + 
 				scaleFactor * 1 + 
 				Math.min(this.rondell.length, 5) * 0.7) + "%";
 			drawButton.style.width = 
-				drawButton.style.height = (30 + scaleFactor * 17) * 0.7;
+				drawButton.style.height = (30 + scaleFactor * 17) * 0.9;
 			let card = this.rondell[i];
 			let cardDiv = document.querySelector("#card-" + card);
 			if (!cardDiv) {
@@ -262,7 +261,7 @@ let app = {
 	},
 	cardClick: function(evt) {
 		document.getElementById("help-text").classList.remove("visible");
-		let cardId = +evt.target.dataset.id;
+		let cardId = evt.target.dataset.id;
 		if (!cardId) {
 			return;
 		}
@@ -371,6 +370,8 @@ let app = {
 		let discard = document.getElementById("discard-number");
 		document.getElementById("card-area").appendChild(card);
 		card.style.top = "80%";
+		card.style.transform = "scale(0.5)";
+		card.style.transformOrigin = "top left";
 		card.style.left = 0;
 		card.style.opacity = 0;
 		window.setTimeout(function() {
