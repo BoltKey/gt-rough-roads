@@ -21,20 +21,23 @@
     padding: 25px;
 }
 #title-ship {
-	background: url(images/ship-title.png);
-    width: 100%;
+    background: url(images/ship-title.png);
+    width: 140%;
+    left: -20%;
+    position: absolute;
+    overflow: hidden;
     height: 100%;
-    background-size: contain;
+    background-size: cover;
     /* z-index: 550; */
     background-position: center;
-	background-repeat: no-repeat;
+    background-repeat: no-repeat;
 }
 #title-text {
 	background: url(images/logo-en.png);
     width: 100%;
     height: 36%;
     background-size: contain;
-    /* z-index: 550; */
+    z-index: 550;
     background-position: center;
 	background-repeat: no-repeat;
 	position: absolute;
@@ -105,20 +108,18 @@ h1, h2 {
     text-align: center;
     position: absolute;
     left: 2%;
+	padding: 16px;
 }
 
 #draw-number {
-	background-image: url(images/cards/GT2-new_Rough_Road_EN_revers.png);
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
-	color: white;
+    background-image: url(images/deck.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: black;
+    
 }
 
-#draw-number {
-	top: 2vw;
-	text-shadow: 5px 5px black;
-}
 #discard-number {
     bottom: 6vw;
     background: #4d2400;
@@ -223,9 +224,13 @@ button {
 	transition: top 1s, left 1s, transform .2s, width 1s, height 1s, opacity 1s;
 	z-index: 200;
 	padding: 0;
-	border-radius: 10000px;
-	border-color: #eb7134;
-	background: azure;
+	border: none;
+	background-image: url(images/enter_button.png);
+	background-size: 100% 100%;
+	color: white;
+}
+button:active {
+	transform: scale(0.95);
 }
 #draw-button:hover, .discard-button:hover {
 	transform: translate(-50%, -50%) scale(2.7);
@@ -339,7 +344,7 @@ button {
 button#help-button {
     position: absolute;
     padding: 5px;
-    background: #6262d3;
+    /*background: #6262d3;*/
     z-index: 201;
     top: 50%;
     transform: translate(0, -50%);
