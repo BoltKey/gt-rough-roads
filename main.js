@@ -99,12 +99,21 @@ let app = {
 	
 	fillHelp: function() {
 		let helpDiv = document.getElementById("help-text");
-		let i = 0;
+		for (var i in this.currLanguage.help) {
+			this.currLanguage.help[i] = this.currLanguage.help[i].replace(
+				"[random_extra_hint]", 
+				this.currLanguage.hints[Math.floor(Math.random() * this.currLanguage.hints.length)]
+			).
+			replace("[x]", "<span class='x-icon'></span>").
+			replace("[+]", "<span class='plus-icon'></span>");
+		}
+		var i = 0;
 		this.currLanguage.help[this.currLanguage.help.length - 1] = 
 			this.currLanguage.help[this.currLanguage.help.length - 1].replace(
 				"[random_extra_hint]", 
 				this.currLanguage.hints[Math.floor(Math.random() * this.currLanguage.hints.length)]
-			)
+			);
+		
 		for (let helpNode of helpDiv.children) {
 			helpNode.innerHTML = this.currLanguage.help[i++];
 		}
