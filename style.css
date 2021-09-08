@@ -3,6 +3,10 @@
 	src: url("fonts/amorpheusregular.otf");
 }
 
+element {
+  --main-text-color: #221A42;
+}
+
 #title-page {
     background: url(images/background-title.png);
     width: 100%;
@@ -274,7 +278,7 @@ button:hover {
     border: none;
     transform: translate(-50%, -50%) scale(2);
     right: 6%;
-    top: 0%;
+    top: 5%;
     width: 7%;
     height: 10%;
 }
@@ -358,8 +362,8 @@ button#help-button {
     transform: translate(0, -50%);
     right: 5%;
     margin: auto auto;
-    font-size: 3em;
+    font-size: 4em;
     background-image: url(images/i-button.png);
-    color: black;
+    color: #221A42;
     background-color: transparent;
 }
