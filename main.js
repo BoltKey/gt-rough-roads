@@ -58,7 +58,8 @@ let app = {
 		});
 		document.getElementById("title-page").addEventListener("click", function(e) {
 			document.getElementById("title-page").style.opacity = 0;
-			window.setTimeout(function() {document.getElementById("title-page").remove()}, 1000);
+			window.setTimeout(function() {document.getElementById("title-page").remove(); app.updateRondell();}, 1000);
+			
 		});
 		document.getElementById("help-wrap").addEventListener("click", function(e) {document.getElementById("help-wrap").classList.remove("visible")} );
 		

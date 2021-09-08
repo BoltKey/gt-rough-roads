@@ -132,7 +132,8 @@ div#draw-number.no-cards {
 }
 
 #draw-number, #discard-number {
-    font-family: roboto, sans-serif;
+    font-family: orgovan-rounded-web, sans-serif;
+    /* font-family: roboto, sans-serif; */
     font-weight: 500;
     font-style: normal;
     font-size: 3em;
@@ -221,20 +222,23 @@ div#draw-number.no-cards {
 
 button {
     position: absolute;
-    font-size: 24px;
+    font-size: 34px;
     padding: 17px;
     transition: top 1s, left 1s, transform .2s, width 1s, height 1s, opacity 1s;
     z-index: 200;
     padding: 0;
     border: none;
     background-image: url(images/enter_button.png);
-	background-color: transparent;
+    background-color: transparent;
     background-size: 100% 100%;
     color: white;
     font-family: orgovan-rounded-web, sans-serif;
 }
 button:active {
 	transform: scale(0.95);
+}
+button:hover {
+	cursor: pointer;
 }
 #draw-button:hover, .discard-button:hover {
 	transform: translate(-50%, -50%) scale(2.7);
@@ -279,7 +283,7 @@ button:active {
 }
 
 #discard-all-button {
-	top: 2%;
+	top: 1%;
     right: 2%;
 	padding: 1vw;
 }
