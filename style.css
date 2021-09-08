@@ -264,6 +264,7 @@ button:hover {
     transform: translate(-50%, -50%) scale(2.5);
     left: 50%;
     top: 20%;
+	padding: 0;
 }
 
 #draw-button.small {
@@ -282,6 +283,7 @@ button:hover {
     top: 11%;
     width: 7%;
     height: 9%;
+	padding: 0;
 }
 :is(.discard-button, #discard-all-button).hidden {
 	opacity: 0;
