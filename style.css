@@ -125,7 +125,7 @@ h1, h2 {
 
 #draw-number {
     background-image: url(images/deck.png);
-    
+    top: -2%;
 }
 
 #discard-number {
