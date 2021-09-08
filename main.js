@@ -222,12 +222,12 @@ let app = {
 		}
 		
 		document.getElementById("draw-number").innerHTML = this.deck.length;
-		if (this.deck.length) {
+		/*if (this.deck.length) {
 			document.getElementById("draw-number").classList.remove("no-cards");
 		}
 		else {
 			document.getElementById("draw-number").classList.add("no-cards");
-		}
+		}*/
 		document.getElementById("discard-number").innerHTML = this.discard.length;
 	},
 	cardClick: function(evt) {
