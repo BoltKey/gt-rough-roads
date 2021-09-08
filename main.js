@@ -30,7 +30,7 @@ let app = {
 		this.fillHelp();
 		
 		if (!localStorage.getItem("rondell")) {
-			document.getElementById("help-text").classList.add("visible");
+			document.getElementById("help-wrap").classList.add("visible");
 		}
 		
 		for (let name of ['draw-button', 'discard-all-button', 'reshuffle-discard-button', 'help-button']) {
