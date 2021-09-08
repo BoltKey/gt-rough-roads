@@ -15,7 +15,30 @@ let app = {
 		this.noSleep = new NoSleep();
 		let lang = localStorage.getItem("language") || "en";
 		this.currLanguage = strings[lang] || strings.en;
-		let cardPool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+		//let cardPool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+		let cardPool = [
+			"metal_fatigue",
+			//"explosive_stuff",
+			"paranoid_locals",
+			"cosmic_psychosis",
+			//"personalized_cabins",
+			//"tough_trip",
+			"meteoric_inversion",
+			"remorseless_fate",
+			//"stiff_competition",
+			"big_baddies",
+			//"engine_envy",
+			"piercing_projectiles",
+			"union_ship",
+			"bad_luck",
+			"nasty_surprise",
+			"infected_goods",
+			"defective_connectors",
+			"space_junk",
+			"sommersault",
+			"dead_zone",
+			//"abandoned_debris",
+		]
 		this.deck = JSON.parse(localStorage.getItem("deck")) || cardPool;
 		this.rondell = JSON.parse(localStorage.getItem("rondell")) || [];
 		this.discard = JSON.parse(localStorage.getItem("discard")) || [];
@@ -92,8 +115,8 @@ let app = {
 		}
 		let cardWrap = document.createElement("div");
 		if (id != "back") {
-			headerText = this.currLanguage.cards[id][0];
-			paragraphText = this.currLanguage.cards[id][1];
+			/*headerText = this.currLanguage.cards[id][0];
+			paragraphText = this.currLanguage.cards[id][1];*/
 			cardWrap.id = "card-" + id;
 		}
 		cardWrap.classList.add("card-wrap");
@@ -105,7 +128,7 @@ let app = {
 		front.classList.add("card-front");
 		front.classList.add("card-" + id);
 		
-		front.style.backgroundImage = "url(images/cards/GT2-new_Rough_Road_EN_0" + id + ".png)";
+		front.style.backgroundImage = "url(images/cards/" + id + ".jpg)";
 		
 		let xButton = document.createElement("button");
 		xButton.classList.add("discard-button");
