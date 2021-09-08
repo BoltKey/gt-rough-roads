@@ -277,11 +277,11 @@ button:hover {
     background-repeat: no-repeat;
     border-radius: 0;
     border: none;
-    border-radius: 3.5px;
+    border-radius: 9.5px;
     transform: translate(-50%, -50%) scale(2);
     right: -2%;
     top: 11%;
-    width: 6%;
+    width: 5.8%;
     height: 9%;
     padding: 0;
 }

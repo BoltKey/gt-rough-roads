@@ -219,7 +219,7 @@ let app = {
 			}
 			if (i == 0) {
 				cardDiv.style.left = "50%";
-				cardDiv.style.top = (24 + scaleFactor * 3) + "%";
+				cardDiv.style.top = (26 + scaleFactor * 3) + "%";
 				cardDiv.style.transform = "translate(-50%, -50%) scale(" + scaleFactor * 1.2 + ")";
 				/*let rect = cardDiv.getBoundingClientRect();
 				document.getElementById("discard-button").style.left = rect.right;
