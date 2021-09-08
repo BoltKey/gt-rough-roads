@@ -370,7 +370,7 @@ let app = {
 		let discard = document.getElementById("discard-number");
 		document.getElementById("card-area").appendChild(card);
 		card.style.top = "80%";
-		card.style.transform = "scale(0.5)";
+		card.style.transform = "scale(0.2)";
 		card.style.transformOrigin = "top left";
 		card.style.left = 0;
 		card.style.opacity = 0;
