@@ -112,12 +112,12 @@ h1, h2 {
     font-size: 2em;
     text-align: center;
     position: absolute;
-    left: 0%;
-    padding: 16px;
+    left: -2%;
+    padding: 35px;
     font-family: roboto, sans-serif;
     font-weight: 500;
     font-style: normal;
-	background-size: contain;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     color: black;

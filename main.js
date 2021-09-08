@@ -196,7 +196,7 @@ let app = {
 		//discardAllButton.style.top = "80%";
 		
 		discardAllButton.classList.add("hidden");
-		if (this.rondell.length > 1) {
+		if (this.rondell.length >= 1) {
 			discardAllButton.classList.remove("hidden");
 		}
 		
