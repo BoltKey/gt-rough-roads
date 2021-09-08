@@ -5,6 +5,7 @@
 let app = {
 	main: function() {
 		document.getElementById("loading").remove();
+		document.getElementById("loading-button").style.display = '';
 		try {
 			screen.orientation.lock('landscape');
 		}
