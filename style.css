@@ -226,7 +226,7 @@ div#draw-number.no-cards {
 
 button {
     position: absolute;
-    font-size: 34px;
+    font-size: 30px;
     padding: 17px;
     transition: top 1s, left 1s, transform .2s, width 1s, height 1s, opacity 1s;
     z-index: 200;
@@ -237,6 +237,7 @@ button {
     background-size: 100% 100%;
     color: white;
     font-family: orgovan-rounded-web, sans-serif;
+	padding: 1vw 2vw;
 }
 button:active {
 	transform: scale(0.95);
@@ -277,10 +278,10 @@ button:hover {
     border-radius: 0;
     border: none;
     transform: translate(-50%, -50%) scale(2);
-    right: 6%;
-    top: 5%;
+    right: -4%;
+    top: 11%;
     width: 7%;
-    height: 10%;
+    height: 9%;
 }
 :is(.discard-button, #discard-all-button).hidden {
 	opacity: 0;
@@ -289,13 +290,11 @@ button:hover {
 #discard-all-button {
 	top: 1%;
     right: 2%;
-	padding: 1vw;
 }
 
 #reshuffle-discard-button {
     top: 1%;
     left: 13%;
-    padding: 1vw;
 }
 
 #help-text {
