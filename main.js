@@ -69,6 +69,9 @@ let app = {
 			if (name == 'help-button') {
 				document.getElementById("top-bar").appendChild(button);
 			}
+			else if (name == 'discard-all-button' || name == "reshuffle-discard-button") {
+				document.getElementById("button-wrap").appendChild(button);
+			}
 			else {
 				document.getElementById("card-area").appendChild(button);
 			}
@@ -90,7 +93,7 @@ let app = {
 		
 		window.addEventListener('resize', function(e) {this.resizeWindow()}.bind(this));
 		
-		this.resizeWindow();
+		//this.resizeWindow();
 		this.updateRondell();
 	},
 	
@@ -201,6 +204,11 @@ let app = {
 		reshuffleButton.classList.add("hidden");
 		if (this.discard.length >= 1) {
 			reshuffleButton.classList.remove("hidden");
+		}
+		
+		drawButton.classList.add("hidden");
+		if (this.deck.length >= 1) {
+			drawButton.classList.remove("hidden");
 		}
 		
 		//discardAllButton.style.top = (63.5 + scaleFactor * 12) + "%";
