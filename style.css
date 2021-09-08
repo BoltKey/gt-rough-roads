@@ -3,6 +3,21 @@
 	src: url("fonts/amorpheusregular.otf");
 }
 
+body {
+	background-image: url(images/background.png);
+	overflow: hidden;
+	background-size: cover;
+	margin: auto;
+	position: relative;
+
+}
+
+h1, h2 {
+	font-family: orgovan-rounded-web, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
 element {
   --main-text-color: #221A42;
 }
@@ -17,12 +32,23 @@ element {
     z-index: 500;
 }
 #title-page button {
-    bottom: 5%;
-    left: 50%;
+    /* bottom: 5%; */
+    /* left: 50%; */
     /* width: 38%; */
     /* height: 8%; */
     font-size: 3em;
     padding: 25px;
+    position: relative;
+}
+div#title-bottom {
+    position: absolute;
+    bottom: 5%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
 }
 #title-ship {
     background: url(images/ship-title.png);
@@ -48,19 +74,7 @@ element {
 	position: absolute;
 }
 
-body {
-	background-image: url(images/background.png);
-	overflow: hidden;
-	background-size: cover;
-	margin: auto;
-	position: relative;
-}
 
-h1, h2 {
-	font-family: orgovan-rounded-web, sans-serif;
-	font-weight: 400;
-	font-style: normal;
-}
 
 #top-bar {
     height: 10%;
@@ -91,14 +105,13 @@ h1, h2 {
     height: 9em;
     width: 15em;
     background: url(images/cge-logo.jpg);
-    position: absolute;
+    /*position: absolute;*/
     /* left: 0; */
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     transition: transform .2s;
     /* margin: -3px; */
-    margin: auto;
     bottom: 5%;
     left: 5%;
 }
@@ -125,7 +138,7 @@ h1, h2 {
 
 #draw-number {
     background-image: url(images/deck.png);
-    top: 0%;
+	top: -15px;
 }
 
 #discard-number {
@@ -250,7 +263,7 @@ button:hover {
 #draw-button:hover, .discard-button:hover {
 	transform: translate(-50%, -50%) scale(1.3);
 }
-#draw-button:active, .discard-button:active {
+#draw-button:active, .discard-button:active, .i-button:active {
 	transform: translate(-50%, -50%) scale(1.5);
 }
 
@@ -271,7 +284,7 @@ button:hover {
 	transform: translate(-50%, -50%);
 }
 
-.discard-button {
+.discard-button, .i-button {
     background: url(images/x-button.jpg);
     background-size: contain;
     background-position: center;
@@ -285,6 +298,9 @@ button:hover {
     width: 9.8%;
     height: 15%;
     padding: 0;
+}
+.i-button {
+	
 }
 button.hidden {
     opacity: 0.5;
@@ -380,6 +396,12 @@ button#help-button {
     background-repeat: no-repeat;
 }
 
+button.i-button {
+    top: 32%;
+	right: -7%;
+    background-image: url(images/info.png);
+}
+
 span.x-icon {
     width: 1em;
     height: 1em;
@@ -395,6 +417,16 @@ span.plus-icon {
     height: 1em;
     display: inline-block;
     background: url(images/plus-button.jpg);
+    background-size: cover;
+    margin: auto;
+    border-radius: 2px;
+}
+
+span.i-icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background: url(images/info.png);
     background-size: cover;
     margin: auto;
     border-radius: 2px;

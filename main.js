@@ -4,6 +4,13 @@
 
 let app = {
 	main: function() {
+		/*gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: '1lImkfyiOBzCVfcOr-XjfZvtrZdXlsprGd-lH9XQux38',
+          range: 'Class Data!A2:E',
+        }).then(function(response) {
+			console.log(response);
+		});*/
+			
 		document.getElementById("loading").remove();
 		document.getElementById("loading-button").style.display = '';
 		try {
@@ -105,7 +112,9 @@ let app = {
 				this.currLanguage.hints[Math.floor(Math.random() * this.currLanguage.hints.length)]
 			).
 			replace("[x]", "<span class='x-icon'></span>").
-			replace("[+]", "<span class='plus-icon'></span>");
+			replace("[+]", "<span class='plus-icon'></span>").
+			replace("[i]", "<span class='i-icon'></span>")
+			;
 		}
 		var i = 0;
 		this.currLanguage.help[this.currLanguage.help.length - 1] = 
@@ -120,6 +129,7 @@ let app = {
 	},
 
 	createCard: function(id, headerText, paragraphText) {
+		let addIButton = false;
 		let oldCard;
 		if (oldCard = document.getElementById("card-" + id)) {
 			oldCard.remove();
@@ -140,6 +150,14 @@ let app = {
 		front.classList.add("card-" + id);
 		
 		front.style.backgroundImage = "url(images/cards/" + id + ".jpg)";
+		
+		if (addIButton) {
+			let iButton = document.createElement("button");
+			iButton.classList.add("i-button");
+			iButton.dataset.cardId = id;
+			iButton.addEventListener("click", function(e) {this.infoClick(e)}.bind(this));
+			front.appendChild(iButton);
+		}
 		
 		let xButton = document.createElement("button");
 		xButton.classList.add("discard-button");
@@ -412,3 +430,23 @@ let app = {
 	}
 }
 window.onload = function() {app.main()};
+
+
+/*function handleClientLoad() {
+	gapi.load('client:auth2', initClient);
+}
+
+function initClient() {
+	gapi.client.init({
+	}).then(function () {
+	  // Listen for sign-in state changes.
+	  gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+	  // Handle the initial sign-in state.
+	  updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+	  authorizeButton.onclick = handleAuthClick;
+	  signoutButton.onclick = handleSignoutClick;
+	}, function(error) {
+	  appendPre(JSON.stringify(error, null, 2));
+	});
+  }*/

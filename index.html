@@ -26,6 +26,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="text/javascript" src='main.js'></script>
 <script type="text/javascript" src='strings.js'></script>
 </head>
+
+<script async defer src="https://apis.google.com/js/api.js"
+  onload="this.onload=function(){};handleClientLoad()"
+  onreadystatechange="if (this.readyState === 'complete') this.onload()">
+</script>
 <body>
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MSFHW64"
@@ -35,15 +40,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<div id="loading" style="margin: auto; color: #38acc9; font-size: 40px; text-align: center; z-index: 550; position: absolute; top: 50%; width: 100%; font-size: 300%; font-family:orgovan-rounded-web, sans-serif;">Loading...</div>
 		<!--<div id='title-text'></div>-->
 		<div id='title-ship'></div>
-		<a href="https://cge.as/" id='cge-logo' target=”_blank”></a>
-		<button id="loading-button" style="display: none">Hit the roads</button>
+		<div id='title-bottom'>
+			<a href="https://cge.as/" id='cge-logo' target=”_blank”></a>
+			<button id="loading-button" style="display: none">Hit the roads</button>
+		</div>
 	</div>
 	</div>
 	<div id='top-bar'>
 		<div id='logo'> Rough Roads
 		</div>
 		<!--<a href="https://cge.as/" id='cge-logo' target=”_blank”>-->
-		</a>
+		
 	</div>
 	<div id='card-area'>
 		<div id="draw-number"></div>
