@@ -201,7 +201,7 @@ let app = {
 		drawButton.style.top = "40%";
 		
 		drawButton.style.width = 
-			drawButton.style.height = 30 + scaleFactor * 21;
+			drawButton.style.height = 60 + scaleFactor * 42;
 		//discardAllButton.style.top = "80%";
 		
 		discardAllButton.classList.add("hidden");
@@ -227,7 +227,7 @@ let app = {
 				scaleFactor * 3 + 
 				Math.min(this.rondell.length, 5) * 0.7) + "%";
 			drawButton.style.width = 
-				drawButton.style.height = (24 + scaleFactor * 25) * 0.9;
+				drawButton.style.height = (48 + scaleFactor * 50) * 0.9;
 			let card = this.rondell[i];
 			let cardDiv = document.querySelector("#card-" + card);
 			if (!cardDiv) {
