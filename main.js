@@ -210,7 +210,7 @@ let app = {
 				scaleFactor * 1 + 
 				Math.min(this.rondell.length, 5) * 0.7) + "%";
 			drawButton.style.width = 
-				drawButton.style.height = (30 + scaleFactor * 17) * 0.9;
+				drawButton.style.height = (24 + scaleFactor * 25) * 0.9;
 			let card = this.rondell[i];
 			let cardDiv = document.querySelector("#card-" + card);
 			if (!cardDiv) {
