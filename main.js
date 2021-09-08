@@ -175,6 +175,12 @@ let app = {
 			discardAllButton.classList.remove("hidden");
 		}
 		
+		let reshuffleButton = document.getElementById("reshuffle-discard-button");
+		reshuffleButton.classList.add("hidden");
+		if (this.discard.length >= 1) {
+			reshuffleButton.classList.remove("hidden");
+		}
+		
 		//discardAllButton.style.top = (63.5 + scaleFactor * 12) + "%";
 		
 		for (let i in this.rondell) {

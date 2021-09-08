@@ -285,7 +285,7 @@ button:hover {
     height: 9%;
 	padding: 0;
 }
-:is(.discard-button, #discard-all-button).hidden {
+button.hidden {
 	opacity: 0;
 }
 
