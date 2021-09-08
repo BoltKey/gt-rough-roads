@@ -206,8 +206,8 @@ let app = {
 		//discardAllButton.style.top = (63.5 + scaleFactor * 12) + "%";
 		
 		for (let i in this.rondell) {
-			drawButton.style.top = (50 + 
-				scaleFactor * 1 + 
+			drawButton.style.top = (54 - 
+				scaleFactor * 3 + 
 				Math.min(this.rondell.length, 5) * 0.7) + "%";
 			drawButton.style.width = 
 				drawButton.style.height = (24 + scaleFactor * 25) * 0.9;
@@ -219,7 +219,7 @@ let app = {
 			}
 			if (i == 0) {
 				cardDiv.style.left = "50%";
-				cardDiv.style.top = (26 + scaleFactor * 3) + "%";
+				cardDiv.style.top = (30 + scaleFactor * 0) + "%";
 				cardDiv.style.transform = "translate(-50%, -50%) scale(" + scaleFactor * 1.2 + ")";
 				/*let rect = cardDiv.getBoundingClientRect();
 				document.getElementById("discard-button").style.left = rect.right;
@@ -242,7 +242,7 @@ let app = {
 					ratio = (i-1) / (this.rondell.length - 2);
 				}
 				if (this.rondell.length == 3) {
-					ratio += 0.1 * (ratio < 0.5 ? 1 : -1);
+					ratio += 0.2 * (ratio < 0.5 ? 1 : -1);
 				}
 				cardDiv.style.left = (22 + ratio * 56) + "%";
 				cardDiv.style.top = (72 - Math.pow(Math.abs(0.5 - ratio) * 4, 2) + scaleFactor * 6) + "%";
