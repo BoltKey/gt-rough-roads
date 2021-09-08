@@ -3,6 +3,10 @@
 	src: url("fonts/amorpheusregular.otf");
 }
 
+
+html {
+	overflow: auto;
+}
 body {
 	background-image: url(images/background.png);
 	overflow: hidden;
