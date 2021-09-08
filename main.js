@@ -320,7 +320,7 @@ let app = {
 		if (this.rondell.length == 0) {
 			return;
 		}
-		let cardId = +evt.target.dataset.cardId;//this.rondell.shift();
+		let cardId = evt.target.dataset.cardId;//this.rondell.shift();
 		this.rondell.splice(this.rondell.indexOf(cardId), 1);
 		this.discard.push(cardId);
 		let cardDiv = document.getElementById("card-" + cardId);
