@@ -331,13 +331,12 @@ button.hidden {
     position: absolute;
     /* top: 25px; */
     font-size: min(30px, 3.5vw);
-    margin: 10%;
+    margin: 6%;
     opacity: 1;
     transition: opacity .5s, left .5s;
     z-index: 220;
-    max-height: 71%;
+    max-height: 88%;
     overflow: auto;
-	
 }
 .help-text {
     text-align: left;

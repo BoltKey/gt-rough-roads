@@ -101,8 +101,7 @@ let app = {
 		document.getElementById("draw-button").addEventListener("click", function(e) {this.drawCard()}.bind(this), this);
 		document.getElementById("discard-all-button").addEventListener("click", function(e) {this.discardAllClick()}.bind(this));
 		document.getElementById("reshuffle-discard-button").addEventListener("click", function(e) {this.reshuffleDiscard()}.bind(this));
-		document.getElementById("help-button").addEventListener("click", function(e) {		document.getElementById("help-wrap").classList.toggle("visible");
-		});
+		document.getElementById("help-button").addEventListener("click", function(e) {this.helpClick()}.bind(this));
 		document.getElementById("title-page").addEventListener("click", function(e) {
 			document.getElementById("title-page").style.opacity = 0;
 			window.setTimeout(function() {document.getElementById("title-page").remove(); app.updateRondell();}, 1000);
@@ -123,7 +122,8 @@ let app = {
 		for (var i in this.currLanguage.help) {
 			this.currLanguage.help[i] = this.currLanguage.help[i].replace(
 				"[random_extra_hint]", 
-				this.currLanguage.hints[Math.floor(Math.random() * this.currLanguage.hints.length)]
+				//this.currLanguage.hints[Math.floor(Math.random() * this.currLanguage.hints.length)]
+				"<span id='extra-hint'></span>"
 			).
 			replace("[x]", "<span class='x-icon'></span>").
 			replace("[+]", "<span class='plus-icon'></span>").
@@ -131,15 +131,14 @@ let app = {
 			;
 		}
 		var i = 0;
-		this.currLanguage.help[this.currLanguage.help.length - 1] = 
-			this.currLanguage.help[this.currLanguage.help.length - 1].replace(
-				"[random_extra_hint]", 
-				this.currLanguage.hints[Math.floor(Math.random() * this.currLanguage.hints.length)]
-			);
 		
 		for (let helpNode of helpDiv.children) {
 			helpNode.innerHTML = this.currLanguage.help[i++];
 		}
+	},
+	helpClick: function(evt) {
+		document.getElementById("help-wrap").classList.toggle("visible");
+		document.getElementById("extra-hint").innerHTML = this.currLanguage.hints[Math.floor(Math.random() * this.currLanguage.hints.length)];
 	},
 
 	createCard: function(id, headerText, paragraphText) {
@@ -397,7 +396,7 @@ let app = {
 	},
 	infoClick: function(evt) {
 		let cardId = evt.target.dataset.cardId;
-		if (this.rondell[0] == cardId) {
+		if (this.rondell[0] == cardId || this.rondell.length == 2) {
 			let helpText = document.querySelector("#card-" + cardId + " .help-text");
 			helpText.classList.toggle("visible");
 		}
