@@ -1,6 +1,6 @@
 'use strict';
 
-
+window.googleDocCallback = function () { return true; };
 
 let app = {
 	main: function() {
@@ -10,6 +10,10 @@ let app = {
         }).then(function(response) {
 			console.log(response);
 		});*/
+		/*fetch('https://docs.google.com/spreadsheets/u/0/d/1lImkfyiOBzCVfcOr-XjfZvtrZdXlsprGd-lH9XQux38/gviz/tq?tqx=out:json&callback=googleDocCallback', {method: "GET", mode: "no-cors"}).
+		then(function(response) {console.log(response); response.json()}).
+		then(response => console.log(response))
+		;*/
 			
 		document.getElementById("loading").remove();
 		document.getElementById("loading-button").style.display = '';
@@ -135,10 +139,16 @@ let app = {
 			oldCard.remove();
 		}
 		let cardWrap = document.createElement("div");
+		let helpTextString = null;
 		if (id != "back") {
 			/*headerText = this.currLanguage.cards[id][0];
 			paragraphText = this.currLanguage.cards[id][1];*/
 			cardWrap.id = "card-" + id;
+			helpTextString = this.currLanguage.cards[id][2];
+		}
+		
+		if (helpTextString) {
+			addIButton = true;
 		}
 		cardWrap.classList.add("card-wrap");
 		
@@ -157,6 +167,11 @@ let app = {
 			iButton.dataset.cardId = id;
 			iButton.addEventListener("click", function(e) {this.infoClick(e)}.bind(this));
 			front.appendChild(iButton);
+			
+			let helpText = document.createElement("div");
+			helpText.classList.add("help-text");
+			helpText.innerHTML = helpTextString;
+			front.appendChild(helpText);
 		}
 		
 		let xButton = document.createElement("button");
@@ -261,6 +276,10 @@ let app = {
 				document.getElementById("discard-button").style.top = rect.top;*/
 			}
 			else {
+				let helpText = document.querySelector("#card-" + card + " .help-text");
+				if (helpText) {
+					helpText.classList.remove("visible");
+				}
 				let scaleMult = [0, 0, 1, 0.8, 0.6][this.rondell.length] || 0.5;
 				if (this.rondell.length == 2) {
 					scaleMult = 1;
@@ -365,6 +384,11 @@ let app = {
 		window.setTimeout(function() {cardDiv.remove();}, 500);
 		this.updateRondell();
 		this.saveState();
+	},
+	infoClick: function(evt) {
+		let cardId = evt.target.dataset.cardId 
+		let helpText = document.querySelector("#card-" + cardId + " .help-text");
+		helpText.classList.toggle("visible");
 	},
 	discardAllClick: function(evt) {
 		for (let c of this.rondell) {

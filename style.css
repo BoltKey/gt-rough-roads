@@ -265,10 +265,10 @@ button:hover {
 	cursor: pointer;
 }
 #draw-button:hover, .discard-button:hover {
-	transform: translate(-50%, -50%) scale(1.3);
+	transform: translate(-50%, -50%) scale(0.9);
 }
 #draw-button:active, .discard-button:active, .i-button:active {
-	transform: translate(-50%, -50%) scale(1.5);
+	transform: translate(-50%, -50%) scale(0.8);
 }
 
 .card-wrap:hover  {
@@ -322,7 +322,7 @@ button.hidden {
 }
 
 
-#help-text {
+#help-text, .help-text {
     color: white;
     background: rgb(9 41 72 / 87%);
     border: solid 4px rgba(59, 97, 168, 1);
@@ -333,11 +333,28 @@ button.hidden {
     font-size: min(30px, 3.5vw);
     margin: 10%;
     opacity: 1;
-    transition: opacity .5s;
+    transition: opacity .5s, left .5s;
     z-index: 220;
     max-height: 71%;
     overflow: auto;
 	
+}
+.help-text {
+    text-align: left;
+	margin: 5%;
+	opacity: 0;
+	left: -100%;
+	position: absolute;
+    width: 80%;
+	font-size: 200%;
+}
+.help-text.visible {
+	opacity: 1;
+	left: 0;
+}
+
+.help-text * {
+    text-align: left;
 }
 :is(#help-text, #help-wrap).visible {
 	opacity: 1;
@@ -360,9 +377,8 @@ button.hidden {
     font-size: 1.3em;
 	margin: 20px 0;
 }
-#help-text div {
+#help-text div, .help-text * {
     margin: 20px 0;
-    font-size: 0.8em;
     font-family: roboto, sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -414,6 +430,7 @@ span.x-icon {
     background-size: cover;
     margin: auto;
     border-radius: 2px;
+	transform: translate(0px, 15%);
 }
 
 span.plus-icon {
@@ -424,6 +441,7 @@ span.plus-icon {
     background-size: cover;
     margin: auto;
     border-radius: 2px;
+	transform: translate(0px, 15%);
 }
 
 span.i-icon {
@@ -434,4 +452,5 @@ span.i-icon {
     background-size: cover;
     margin: auto;
     border-radius: 2px;
+	transform: translate(0px, 15%);
 }
