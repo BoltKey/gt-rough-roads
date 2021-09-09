@@ -453,3 +453,20 @@ span.i-icon {
     border-radius: 2px;
 	transform: translate(0px, 15%);
 }
+
+#turn-portrait {
+    background: black;
+    display: none;
+	height: 100%;
+    color: white;
+    text-align: center;
+    padding: 15% 10%;
+    font-size: 300%;
+    font-family: 'orgovan-rounded-web';
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+	#turn-portrait {
+		display: block;
+	}
+}
