@@ -1,5 +1,15 @@
 'use strict';
 
+/*
+nahoda pokazde, kdyz se otevre
+
+velikost textu na desktopu mensi
+
+nezobrazovat help kdyz je karta dole
+
+
+*/
+
 window.googleDocCallback = function () { return true; };
 
 let app = {
@@ -386,9 +396,11 @@ let app = {
 		this.saveState();
 	},
 	infoClick: function(evt) {
-		let cardId = evt.target.dataset.cardId 
-		let helpText = document.querySelector("#card-" + cardId + " .help-text");
-		helpText.classList.toggle("visible");
+		let cardId = evt.target.dataset.cardId;
+		if (this.rondell[0] == cardId) {
+			let helpText = document.querySelector("#card-" + cardId + " .help-text");
+			helpText.classList.toggle("visible");
+		}
 	},
 	discardAllClick: function(evt) {
 		for (let c of this.rondell) {
