@@ -351,6 +351,7 @@ button.hidden {
     z-index: 220;
     max-height: 88%;
     overflow: auto;
+	pointer-events: none;
 }
 .help-text {
     text-align: left;
