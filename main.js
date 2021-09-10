@@ -34,10 +34,10 @@ let app = {
 			// sorry
 		}
 		this.noSleep = new NoSleep();
-		let lang = localStorage.getItem("language") || "en";
-		this.currLanguage = strings[lang] || strings.en;
+		this.lang = localStorage.getItem("language") || "en";
+		//this.currLanguage = strings[lang] || strings.en;
 		//let cardPool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-		let cardPool = [
+		/*let cardPool = [
 			"metal_fatigue",
 			//"explosive_stuff",
 			"paranoid_locals",
@@ -59,7 +59,16 @@ let app = {
 			"sommersault",
 			"dead_zone",
 			//"abandoned_debris",
-		]
+		]*/
+		let cardPool = [];
+		for (let card in strings.Cards) {
+			if (strings.Cards[card].app_status == null 
+				//&& strings.Cards[card].pic_status == "F"
+				) {
+				cardPool.push(card);
+			}
+		}
+		
 		this.deck = JSON.parse(localStorage.getItem("deck")) || cardPool;
 		this.rondell = JSON.parse(localStorage.getItem("rondell")) || [];
 		this.discard = JSON.parse(localStorage.getItem("discard")) || [];
@@ -82,10 +91,10 @@ let app = {
 			let button = document.createElement("button");
 			button.id = name;
 			if (name == 'discard-all-button') {
-				button.innerHTML = "Discard all";
+				button.innerHTML = strings.Texts.button_discard["string_" + this.lang];
 			}
 			if (name == 'reshuffle-discard-button') {
-				button.innerHTML = "Reshuffle discard";
+				button.innerHTML = strings.Texts.button_reshuffle["string_" + this.lang];
 			}
 			if (name == 'help-button') {
 				document.getElementById("top-bar").appendChild(button);
@@ -119,8 +128,9 @@ let app = {
 	
 	fillHelp: function() {
 		let helpDiv = document.getElementById("help-text");
-		for (var i in this.currLanguage.help) {
-			this.currLanguage.help[i] = this.currLanguage.help[i].replace(
+		for (var par of ["paragraph1", "paragraph2", "paragraph3", "footnote"]) {
+			strings.Texts[par]["string_" + this.lang] = 
+				strings.Texts[par]["string_" + this.lang].replace(
 				"[random_extra_hint]", 
 				//this.currLanguage.hints[Math.floor(Math.random() * this.currLanguage.hints.length)]
 				"<span id='extra-hint'></span>"
@@ -130,15 +140,21 @@ let app = {
 			replace("[i]", "<span class='i-icon'></span>")
 			;
 		}
-		var i = 0;
-		
-		for (let helpNode of helpDiv.children) {
-			helpNode.innerHTML = this.currLanguage.help[i++];
+		var i = 1;
+		document.querySelector("#help-text h1").innerHTML = strings.Texts.title["string_" + this.lang];
+		document.querySelector("#help-text h2").innerHTML = strings.Texts.subtitle["string_" + this.lang];
+		for (let paragraph = 1; paragraph <= 3; ++paragraph) {
+			document.querySelector("#help-text div:nth-of-type(" + paragraph + ")").innerHTML = strings.Texts["paragraph" + paragraph]["string_" + this.lang];
 		}
+		document.querySelector("#help-text .footnote").innerHTML = strings.Texts.footnote["string_" + this.lang];
+		/*for (let helpNode of helpDiv.children) {
+			helpNode.innerHTML = this.currLanguage.help[i++];
+		}*/
 	},
 	helpClick: function(evt) {
 		document.getElementById("help-wrap").classList.toggle("visible");
-		document.getElementById("extra-hint").innerHTML = this.currLanguage.hints[Math.floor(Math.random() * this.currLanguage.hints.length)];
+		let hintNo = Math.floor(Math.random() * 9) + 1;
+		document.getElementById("extra-hint").innerHTML = strings.Texts["extra_hint" + hintNo]["string_" + this.lang];
 	},
 
 	createCard: function(id, headerText, paragraphText) {
@@ -149,11 +165,17 @@ let app = {
 		}
 		let cardWrap = document.createElement("div");
 		let helpTextString = null;
+		let cardStrings = strings.Cards[id];
 		if (id != "back") {
 			/*headerText = this.currLanguage.cards[id][0];
 			paragraphText = this.currLanguage.cards[id][1];*/
 			cardWrap.id = "card-" + id;
-			helpTextString = this.currLanguage.cards[id][2];
+			helpTextString = cardStrings["clarification_" + this.lang];
+			if (helpTextString) {
+				helpTextString = helpTextString.replace("-", "")
+				helpTextString = helpTextString.split("\n-").join("</li><li>");
+				helpTextString = "<ul><li>" + helpTextString + "</li></ul>";
+			}
 		}
 		
 		if (helpTextString) {
