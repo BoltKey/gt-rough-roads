@@ -8,7 +8,7 @@ const strings = {
 			"remorseless_fate": ["Remorseless Fate", "Lorem ipsum lorem ipsum."],
 			"stiff_competition": ["Big Baddies", "Lorem ipsum lorem ipsum."],
 			
-			"piercing_projectiles": ["Piercing Projectiles", "Lorem ipsum lorem ipsum.", "<ul><li> First give up all crew member (incl. aliens), then their cabins. </li><li>Cabins lost by any way are returned to the pile, not to your lost components.</li>"],
+			"piercing_projectiles": ["Piercing Projectiles", "Lorem ipsum lorem ipsum."],
 			"union_ship": ["Union Ship", "Lorem ipsum lorem ipsum.", "<ul><li>The crew's labor union will not accept batteries instead of goods. </li><li> If you have not enough goods and credits, you won't finish the flight.</li></ul>"],
 			"bad_luck": ["Bad Luck", "Lorem ipsum lorem ipsum."],
 			"nasty_surprise": ["Nasty Surprise", "Lorem ipsum lorem ipsum.", "<ol><li> After building, discard this card by hitting the [x] button, and reveal another by [+] button. </li><li> If you find one with a ship icon, keep doing that until you find one without it. </li><li> Enjoy your surprise :)</li>"],
@@ -21,6 +21,8 @@ const strings = {
 			"metal_fatigue": ["Metal Fatique", "Lorem ipsum lorem ipsum."],
 			
 			"big_baddies": ["Big Baddies", "Lorem ipsum"]
+			
+			/*"<ul><li> First give up all crew member (incl. aliens), then their cabins. </li><li>Cabins lost by any way are returned to the pile, not to your lost components.</li>"*/
 			//["Placeholder 6", "Lorem ipsum lorem ipsum."],
 			
 		},
