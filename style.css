@@ -9,7 +9,6 @@ html {
 }
 body {
 	background-image: url(images/background.png);
-	overflow: hidden;
 	background-size: cover;
 	margin: auto;
 	position: relative;
