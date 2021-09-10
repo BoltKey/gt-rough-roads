@@ -313,7 +313,11 @@ let app = {
 			if (i == 0) {
 				cardDiv.style.left = "50%";
 				cardDiv.style.top = (30 + scaleFactor * 0) + "%";
-				cardDiv.style.transform = "translate(-50%, -50%) scale(" + scaleFactor * 1.2 + ")";
+				let scaleAmt = scaleFactor * 1.2;
+				if (this.rondell.length == 1) {
+					scaleAmt *= 1.15;
+				}
+				cardDiv.style.transform = "translate(-50%, -50%) scale(" + scaleAmt + ")";
 				if (this.landscape) {
 					cardDiv.style.top = "50%";
 					cardDiv.style.left = "45%";
@@ -338,7 +342,7 @@ let app = {
 					scaleMult = 0.8;
 				}
 				if (this.landscape) {
-					scaleMult *= 0.7;
+					scaleMult *= 0.6;
 				}
 				cardDiv.style.transform = "translate(-50%, -50%) scale(" + (scaleFactor * scaleMult) + ")";
 				let ratio;
