@@ -121,8 +121,9 @@ let app = {
 		
 		
 		window.addEventListener('resize', function(e) {this.resizeWindow()}.bind(this));
+		window.addEventListener('deviceorientation', function(e) {this.resizeWindow()}.bind(this));
 		
-		//this.resizeWindow();
+		this.resizeWindow();
 		this.updateRondell();
 	},
 	
@@ -259,6 +260,9 @@ let app = {
 		
 		let cardWidth = 1219;
 		let scaleFactor = Math.min(window.innerHeight * .6, window.innerWidth) / cardWidth * .8;
+		if (this.landscape) {
+			scaleFactor *= 1.7;
+		}
 		let drawButton = document.getElementById("draw-button");
 		let discardAllButton = document.getElementById("discard-all-button");
 		drawButton.classList.remove("small");
@@ -283,15 +287,23 @@ let app = {
 		if (this.deck.length >= 1 || this.discard.length >= 1) {
 			drawButton.classList.remove("hidden");
 		}
+		drawButton.style.top = (54 - 
+			scaleFactor * 3 + 
+			Math.min(this.rondell.length, 5) * 0.7) + "%";
+		drawButton.style.width = 
+			drawButton.style.height = (48 + scaleFactor * 50) * 0.9;
+		drawButton.style.left = "50%";
+		if (this.landscape && this.rondell.length) {
+			drawButton.style.top = "50%";
+			drawButton.style.left = "75%";
+			if (this.rondell.length == 1) {
+				drawButton.style.left = "90%";
+			}
+		}
 		
 		//discardAllButton.style.top = (63.5 + scaleFactor * 12) + "%";
 		
 		for (let i in this.rondell) {
-			drawButton.style.top = (54 - 
-				scaleFactor * 3 + 
-				Math.min(this.rondell.length, 5) * 0.7) + "%";
-			drawButton.style.width = 
-				drawButton.style.height = (48 + scaleFactor * 50) * 0.9;
 			let card = this.rondell[i];
 			let cardDiv = document.querySelector("#card-" + card);
 			if (!cardDiv) {
@@ -302,6 +314,13 @@ let app = {
 				cardDiv.style.left = "50%";
 				cardDiv.style.top = (30 + scaleFactor * 0) + "%";
 				cardDiv.style.transform = "translate(-50%, -50%) scale(" + scaleFactor * 1.2 + ")";
+				if (this.landscape) {
+					cardDiv.style.top = "55%";
+					cardDiv.style.left = "40%";
+					if (this.rondell.length == 1) {
+						cardDiv.style.left = "50%";
+					}
+				}
 				/*let rect = cardDiv.getBoundingClientRect();
 				document.getElementById("discard-button").style.left = rect.right;
 				document.getElementById("discard-button").style.top = rect.top;*/
@@ -318,6 +337,9 @@ let app = {
 				if (this.rondell.length == 3) {
 					scaleMult = 0.8;
 				}
+				if (this.landscape) {
+					scaleMult *= 0.7;
+				}
 				cardDiv.style.transform = "translate(-50%, -50%) scale(" + (scaleFactor * scaleMult) + ")";
 				let ratio;
 				if (this.rondell.length == 2) {
@@ -331,6 +353,10 @@ let app = {
 				}
 				cardDiv.style.left = (22 + ratio * 56) + "%";
 				cardDiv.style.top = (72 - Math.pow(Math.abs(0.5 - ratio) * 4, 2) + scaleFactor * 6) + "%";
+				if (this.landscape) {
+					cardDiv.style.top = (22 + ratio * 56) + "%";
+					cardDiv.style.left = (88 - Math.pow(Math.abs(0.5 - ratio) * 4, 2) + scaleFactor * 6) + "%";
+				}
 				cardDiv.style.zIndex = 100 - i;
 			}
 		}
@@ -477,13 +503,15 @@ let app = {
 	resizeWindow: function(evt) {
 		this.updateRondell();
 		let aspect = window.innerWidth / window.innerHeight;
-		let cutoff = 1.333;
+		let cutoff = 100.333;
 		if (aspect > cutoff) {
 			document.body.style.width = window.innerHeight * cutoff + "px";
 		}
 		else {
 			document.body.style.width = "";
 		}
+		this.landscape = aspect > 1.5;
+		
 	}
 }
 window.onload = function() {app.main()};
