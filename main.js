@@ -512,7 +512,7 @@ let app = {
 			document.body.style.width = window.innerHeight * cutoff + "px";
 		}
 		else {
-			document.body.style.width = window.innerWidth + "px";
+			document.body.style.width = "";
 		}
 		this.landscape = aspect > 1.76;
 		document.body.classList.add("portrait");

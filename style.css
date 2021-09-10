@@ -5,7 +5,7 @@
 
 
 html {
-	overflow: clip;
+	overflow: auto;
 }
 body {
 	background-image: url(images/background.png);
