@@ -105,6 +105,10 @@ div#title-bottom {
 	color: #221A42;
 }
 
+.landscape #top-bar #logo {
+	font-size: 300%;
+}
+
 #cge-logo {
     height: 9em;
     width: 15em;
@@ -314,6 +318,16 @@ button.hidden {
 #button-wrap {
 	position: absolute;
     left: 12%;
+}
+.landscape #button-wrap {
+    left: 0;
+    top: 22%;
+    width: 17%;
+    display: flex;
+    flex-direction: column;
+}
+.landscape button {
+	font-size: 21px;
 }
 #discard-all-button, #reshuffle-discard-button {
 	position: relative;

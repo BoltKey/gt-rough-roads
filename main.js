@@ -261,7 +261,7 @@ let app = {
 		let cardWidth = 1219;
 		let scaleFactor = Math.min(window.innerHeight * .6, window.innerWidth) / cardWidth * .8;
 		if (this.landscape) {
-			scaleFactor *= 1.7;
+			scaleFactor *= 1.9;
 		}
 		let drawButton = document.getElementById("draw-button");
 		let discardAllButton = document.getElementById("discard-all-button");
@@ -315,8 +315,8 @@ let app = {
 				cardDiv.style.top = (30 + scaleFactor * 0) + "%";
 				cardDiv.style.transform = "translate(-50%, -50%) scale(" + scaleFactor * 1.2 + ")";
 				if (this.landscape) {
-					cardDiv.style.top = "55%";
-					cardDiv.style.left = "40%";
+					cardDiv.style.top = "50%";
+					cardDiv.style.left = "45%";
 					if (this.rondell.length == 1) {
 						cardDiv.style.left = "50%";
 					}
@@ -354,7 +354,7 @@ let app = {
 				cardDiv.style.left = (22 + ratio * 56) + "%";
 				cardDiv.style.top = (72 - Math.pow(Math.abs(0.5 - ratio) * 4, 2) + scaleFactor * 6) + "%";
 				if (this.landscape) {
-					cardDiv.style.top = (22 + ratio * 56) + "%";
+					cardDiv.style.top = (100 - (22 + ratio * 56)) + "%";
 					cardDiv.style.left = (88 - Math.pow(Math.abs(0.5 - ratio) * 4, 2) + scaleFactor * 6) + "%";
 				}
 				cardDiv.style.zIndex = 100 - i;
@@ -510,7 +510,13 @@ let app = {
 		else {
 			document.body.style.width = "";
 		}
-		this.landscape = aspect > 1.5;
+		this.landscape = aspect > 1.76;
+		document.body.classList.add("portrait");
+		document.body.classList.remove("landscape");
+		if (this.landscape) {
+			document.body.classList.add("landscape");
+			document.body.classList.remove("portrait");
+		}
 		
 	}
 }
