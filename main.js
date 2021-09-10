@@ -314,7 +314,7 @@ let app = {
 				cardDiv.style.left = "50%";
 				cardDiv.style.top = (30 + scaleFactor * 0) + "%";
 				let scaleAmt = scaleFactor * 1.2;
-				if (this.rondell.length == 1) {
+				if (this.rondell.length == 1 && this.landscape) {
 					scaleAmt *= 1.15;
 				}
 				cardDiv.style.transform = "translate(-50%, -50%) scale(" + scaleAmt + ")";
