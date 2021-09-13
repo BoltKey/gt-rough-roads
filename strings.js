@@ -1,7 +1,7 @@
 
 
 const strings = 
-  {
+ {
   "Cards": {
     "": {
       "pic_status": "a - assigned \ns - sketch \nF - final",
@@ -235,7 +235,7 @@ const strings =
       "string_en": null
     },
     "paragraph1": {
-      "string_en": "This app represents a deck of Rough Road cards. You can do the stuff you could do with a regular deck: reveal a card with a [+] button, discard a card with a [x] button, etc."
+      "string_en": "This app represents a deck of Rough Road cards. You can do the stuff you could do with a regular deck: reveal a card with a [+] button, discard a card with a [x] button, etc. You can also reveal a deck from the discard by clicking the discard deck icon on the bottom left."
     },
     "paragraph2": {
       "string_en": "Agree on the difficulty: 1 - hard, 2 - extreme, 3 - insane. Before each flight, reveal that many cards. Read them out loud - they contain special rules for this flight. Keep your device nearby, so players may check them at any time."
