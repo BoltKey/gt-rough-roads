@@ -108,9 +108,11 @@ let app = {
 		}
 		
 		document.getElementById("draw-button").addEventListener("click", function(e) {this.drawCard()}.bind(this), this);
+		document.getElementById("draw-number").addEventListener("click", function(e) {this.drawCard()}.bind(this), this);
 		document.getElementById("discard-all-button").addEventListener("click", function(e) {this.discardAllClick()}.bind(this));
 		document.getElementById("reshuffle-discard-button").addEventListener("click", function(e) {this.reshuffleDiscard()}.bind(this));
 		document.getElementById("help-button").addEventListener("click", function(e) {this.helpClick()}.bind(this));
+		document.getElementById("discard-number").addEventListener("click", function(e) {this.discardDeckClick()}.bind(this));
 		document.getElementById("title-page").addEventListener("click", function(e) {
 			document.getElementById("title-page").style.opacity = 0;
 			window.setTimeout(function() {document.getElementById("title-page").remove(); app.updateRondell();}, 1000);
@@ -381,15 +383,18 @@ let app = {
 			return;
 		}
 		console.log("click card", cardId);
+		this.enlargeCard(cardId);
+		
+		this.noSleep.enable();
+		
+	},
+	enlargeCard: function(cardId) {
 		let cardIndex = this.rondell.indexOf(cardId);
 		this.rondell[cardIndex] = this.rondell[0];
 		this.rondell[0] = cardId;
 		dataLayer.push({'event': 'card-click', "cardId": cardId});
 		this.updateRondell();
 		this.saveState();
-		
-		this.noSleep.enable();
-		
 	},
 	drawCard: function(evt) {
 		document.getElementById("help-text").classList.remove("visible");
@@ -448,10 +453,12 @@ let app = {
 	},
 	infoClick: function(evt) {
 		let cardId = evt.target.dataset.cardId;
-		if (this.rondell[0] == cardId || this.rondell.length == 2) {
+		//if (this.rondell[0] == cardId || this.rondell.length == 2) {
 			let helpText = document.querySelector("#card-" + cardId + " .help-text");
 			helpText.classList.toggle("visible");
-		}
+		//}
+		this.enlargeCard(cardId);
+		
 	},
 	discardAllClick: function(evt) {
 		for (let c of this.rondell) {
@@ -466,6 +473,29 @@ let app = {
 		}
 		this.rondell = [];
 		this.updateRondell();
+		this.saveState();
+	},
+	discardDeckClick: function(evt) {
+		if (this.discard.length == 0) {
+			return;
+		}
+		let nextId = this.discard.pop();
+		this.rondell.unshift(nextId);
+		let cardDiv = this.createCard(nextId);
+		cardDiv.style.transform = "translate(-50%, -50%) scale(0.3)";
+		cardDiv.style.opacity = "0";
+		cardDiv.classList.add("flipped");
+		cardDiv.style.top = "90%";
+		cardDiv.style.left = "10%";
+		document.getElementById("card-area").appendChild(cardDiv);
+		window.setTimeout(function(thisArg) {
+			cardDiv.style.transform = "translate(-50%, -50%)";
+			cardDiv.style.opacity = "1";
+			thisArg.updateRondell();
+		}, 50, this);
+		window.setTimeout(function() {
+			cardDiv.classList.remove("flipped");
+		}, 800);
 		this.saveState();
 	},
 	reshuffleDiscard: function() {
