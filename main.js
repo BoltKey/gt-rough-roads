@@ -1,14 +1,5 @@
 'use strict';
 
-/*
-nahoda pokazde, kdyz se otevre
-
-velikost textu na desktopu mensi
-
-nezobrazovat help kdyz je karta dole
-
-
-*/
 
 window.googleDocCallback = function () { return true; };
 
@@ -35,31 +26,7 @@ let app = {
 		}
 		this.noSleep = new NoSleep();
 		this.lang = localStorage.getItem("language") || "en";
-		//this.currLanguage = strings[lang] || strings.en;
-		//let cardPool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-		/*let cardPool = [
-			"metal_fatigue",
-			//"explosive_stuff",
-			"paranoid_locals",
-			"cosmic_psychosis",
-			//"personalized_cabins",
-			//"tough_trip",
-			"meteoric_inversion",
-			"remorseless_fate",
-			//"stiff_competition",
-			"big_baddies",
-			//"engine_envy",
-			"piercing_projectiles",
-			"union_ship",
-			"bad_luck",
-			"nasty_surprise",
-			"infected_goods",
-			"defective_connectors",
-			"space_junk",
-			"sommersault",
-			"dead_zone",
-			//"abandoned_debris",
-		]*/
+
 		let cardPool = [];
 		for (let card in strings.Cards) {
 			if (strings.Cards[card].app_status == null 
