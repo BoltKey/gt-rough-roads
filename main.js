@@ -1,5 +1,7 @@
 'use strict';
 
+const CARD_MINUTES_DELAY = 3;
+const CARD_EVENT_DELAY = CARD_MINUTES_DELAY * 60 * 1000;
 
 window.googleDocCallback = function () { return true; };
 
@@ -26,6 +28,8 @@ let app = {
 		}
 		this.noSleep = new NoSleep();
 		this.lang = localStorage.getItem("language") || "en";
+		
+		this.cardTimers = {};
 
 		let cardPool = [];
 		for (let card in strings.Cards) {
@@ -333,6 +337,7 @@ let app = {
 				cardDiv.style.zIndex = 100 - i;
 			}
 		}
+		this.updateTimers();
 		
 		document.getElementById("draw-number").innerHTML = this.deck.length;
 		/*if (this.deck.length) {
@@ -342,6 +347,22 @@ let app = {
 			document.getElementById("draw-number").classList.add("no-cards");
 		}*/
 		document.getElementById("discard-number").innerHTML = this.discard.length;
+		
+	},
+	updateTimers: function() {
+		for (var c of this.rondell) {
+			if (!this.cardTimers[c]) {
+				this.cardTimers[c] = window.setTimeout(
+					() => dataLayer.push({'event': 'card-click', "cardId": cardId}),
+					CARD_EVENT_DELAY);
+			}
+		}
+		for (var c of Object.keys(this.cardTimers)) {
+			if (!this.rondell.includes(c)) {
+				window.clearTimeout(this.cardTimers[c]);
+				delete this.cardTimers[c];
+			}
+		}
 	},
 	cardClick: function(evt) {
 		document.getElementById("help-text").classList.remove("visible");
@@ -359,7 +380,7 @@ let app = {
 		let cardIndex = this.rondell.indexOf(cardId);
 		this.rondell[cardIndex] = this.rondell[0];
 		this.rondell[0] = cardId;
-		dataLayer.push({'event': 'card-click', "cardId": cardId});
+		
 		this.updateRondell();
 		this.saveState();
 	},
