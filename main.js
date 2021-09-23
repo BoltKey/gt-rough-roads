@@ -1,6 +1,6 @@
 'use strict';
 
-const CARD_MINUTES_DELAY = 0.1;
+const CARD_MINUTES_DELAY = 3;
 const CARD_EVENT_DELAY = CARD_MINUTES_DELAY * 60 * 1000;
 
 window.googleDocCallback = function () { return true; };
