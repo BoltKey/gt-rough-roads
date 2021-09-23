@@ -1,6 +1,6 @@
 'use strict';
 
-const CARD_MINUTES_DELAY = 3;
+const CARD_MINUTES_DELAY = 0.1;
 const CARD_EVENT_DELAY = CARD_MINUTES_DELAY * 60 * 1000;
 
 window.googleDocCallback = function () { return true; };
@@ -352,9 +352,7 @@ let app = {
 	updateTimers: function() {
 		for (var c of this.rondell) {
 			if (!this.cardTimers[c]) {
-				this.cardTimers[c] = window.setTimeout(
-					() => dataLayer.push({'event': 'card-click', "cardId": cardId}),
-					CARD_EVENT_DELAY);
+				this.cardTimers[c] = this.makeTimer(c);
 			}
 		}
 		for (var c of Object.keys(this.cardTimers)) {
@@ -363,6 +361,12 @@ let app = {
 				delete this.cardTimers[c];
 			}
 		}
+	},
+	makeTimer: function(cardId) {
+		return window.setTimeout(
+			function() {console.log("sending", cardId); dataLayer.push({'event': 'card-click', "cardId": cardId})},
+			CARD_EVENT_DELAY
+		);
 	},
 	cardClick: function(evt) {
 		document.getElementById("help-text").classList.remove("visible");
