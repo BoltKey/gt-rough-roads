@@ -529,7 +529,7 @@ let app = {
 		}, 600);
 	},
 	resizeWindow: function(evt) {
-		this.updateRondell();
+		
 		let aspect = window.innerWidth / window.innerHeight;
 		let cutoff = 100.333;
 		if (aspect > cutoff) {
@@ -545,7 +545,7 @@ let app = {
 			document.body.classList.add("landscape");
 			document.body.classList.remove("portrait");
 		}
-		
+		this.updateRondell();
 	}
 }
 window.onload = function() {app.main()};
