@@ -3,6 +3,12 @@
 	src: url("fonts/amorpheusregular.otf");
 }
 
+@font-face {
+	font-family: "hpSimplified";
+	src: url("fonts/hp-simplified-265.ttf");
+}
+
+
 
 html {
 	overflow: clip;
@@ -21,6 +27,8 @@ h1, h2 {
 	font-family: orgovan-rounded-web, sans-serif;
 	font-weight: 400;
 	font-style: normal;
+  
+  
 }
 
 element {
@@ -104,6 +112,40 @@ div#title-bottom {
     font-size: 400%;
     font-family: orgovan-rounded-web, sans-serif;
 	color: #221A42;
+  pointer-events: none;
+}
+
+#lang-select-wrap#lang-select-wrap {
+  display: flex;
+  margin: 0;
+  max-height: unset;
+  transform: translate(-150%, 34%);
+  transition: transform .2s;
+}
+#lang-select-wrap#lang-select-wrap.visible {
+  transform: translate(10%, 34%);
+}
+
+#lang-select, .lang-select {
+  height: 130px;
+  top: 5%;
+  width: 130px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  z-index: 100;
+}
+
+#lang-select {
+    height: 60%;
+    transform: translate(0, 35%);
+}
+.lang-select.de {
+  background-image: url(images/flag-de.png);
+}
+.lang-select.en {
+  background-image: url(images/flag-en.png);
 }
 
 .landscape #top-bar #logo {
@@ -189,7 +231,6 @@ div#draw-number.no-cards {
 .card-front {
     background: url(images/card-background.jpg);
     background-size: cover;
-    padding: 6px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -197,18 +238,46 @@ div#draw-number.no-cards {
 .card-wrap .card-back {
     transform: rotateY(180deg);
     transform-origin: center;
-	background: url(images/cards/GT2-new_Rough_Road_EN_revers.png);
+	background: url(images/cards/revers.jpg);
     background-size: cover;
 }
 
 .card-front * {
-    color: #e0e0e0;
+    color: black;
     text-align: center;
 	margin: 0;
+  pointer-events: none;
 }
 
 .card-front h2 {
-	font-family: amorpheusregular, arial;
+	font-family: catseye, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 83px;
+}
+
+.card-front p {
+    font-family: hpSimplified, Arial;
+    font-size: 42px;
+    margin: 0px 40px;
+    margin-bottom: 20px;
+}
+.cloud {
+    background-image: url(images/cards/cloud.png);
+    width: 100%;
+    background-size: cover;
+    padding-top: 380px;
+    border-radius: 50px;
+    position: relative;
+}
+.cloud .ship-icon {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 0;
+  background-image: url(images/cards/ship_icon.png);
+  background-repeat: no-repeat;
+  top: 334px;
 }
 
 .card-front .card-image {
@@ -338,7 +407,7 @@ button.hidden {
 }
 
 
-#help-text, .help-text {
+#help-text, .help-text, #lang-select-wrap {
     color: white;
     background: rgb(9 41 72 / 87%);
     border: solid 4px rgba(59, 97, 168, 1);
@@ -362,10 +431,15 @@ button.hidden {
 	position: absolute;
     width: 80%;
 	font-size: 200%;
+
+}
+.help-text li {
+    color: white;
 }
 .help-text.visible {
 	opacity: 1;
 	left: 0;
+  pointer-events: all;
 }
 
 .help-text * {
@@ -435,6 +509,10 @@ button.i-button {
     top: 32%;
 	right: -7%;
     background-image: url(images/info.png);
+    pointer-events: all;
+}
+button.discard-button {
+  pointer-events: all;
 }
 
 span.x-icon {
