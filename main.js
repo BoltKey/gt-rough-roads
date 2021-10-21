@@ -29,8 +29,15 @@ let app = {
 			// sorry
 		}
 		this.noSleep = new NoSleep();
-		this.lang = localStorage.getItem("language") || "en";
-    
+    if (localStorage.getItem("language")) {
+      this.lang = localStorage.getItem("language");
+    }
+    else {
+      this.lang = navigator.language.substr(0, 2);
+    }
+    if (!["en", "de"].includes(this.lang)) {
+      this.lang = "en";
+    }
 		
 		this.cardTimers = {};
 
@@ -168,11 +175,12 @@ let app = {
 	},
   
   helpTextString: function(id) {
-    var helpTextString = strings.Cards[id]["clarification_" + this.lang];
+    var helpTextString = strings.Cards[id]["clarification_" + this.lang] ;
 		if (helpTextString) {
 			helpTextString = helpTextString.replaceAll("- ", "")
 			helpTextString = helpTextString.replaceAll("\n", "</li><li>");
 			helpTextString = "<ul><li>" + helpTextString + "</li></ul>";
+      helpTextString = helpTextString.replace("[ship icon]","<div class='ship-icon'></div>");
     }
     return helpTextString;
   },

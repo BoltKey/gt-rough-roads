@@ -119,12 +119,15 @@ div#title-bottom {
   display: flex;
   margin: 0;
   max-height: unset;
-  transform: translate(-150%, 34%);
+  right: 2%;
+  top: 50px;
+  position: absolute;
+  transform: translate(110%, 0);
   transition: transform .2s;
 }
 #lang-select-wrap#lang-select-wrap.visible {
-  transform: translate(10%, 34%);
-  z-index: 500;
+  transform: translate(0%, 0);
+  z-index: 600;
 }
 
 #lang-select, .lang-select {
@@ -140,7 +143,10 @@ div#title-bottom {
 
 #lang-select {
     height: 60%;
+    right: 10%;
     transform: translate(0, 35%);
+    position: absolute;
+    z-index: 500;
 }
 .lang-select.de {
   background-image: url(images/flag-de.png);
@@ -281,13 +287,18 @@ div#draw-number.no-cards {
   top: 334px;
 }
 
-p .ship-icon {
-  background-image: url(images/cards/ship_icon-nasty_surprise.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 40px;
-  height: 40px;
-  display: inline-block;
+:is(p, li) .ship-icon {
+    background-image: url(images/cards/ship_icon-nasty_surprise.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin: 0;
+}
+
+li .ship-icon {
+  background-image: url(images/cards/ship_icon.png);
 }
 
 .card-front .card-image {
@@ -502,7 +513,7 @@ button#help-button {
     z-index: 201;
     top: 50%;
     transform: translate(0, -50%);
-    right: 5%;
+    right: 1%;
     margin: auto auto;
     font-size: 4em;
     background-image: url(images/i-button.png);
