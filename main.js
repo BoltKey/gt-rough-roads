@@ -190,7 +190,7 @@ let app = {
     let paragraphText = "";
 		if (id != "back") {
 			headerText = strings.Cards[id]["name_" + this.lang];
-			paragraphText = strings.Cards[id]["text_" + this.lang];
+			paragraphText = strings.Cards[id]["text_" + this.lang].replace("[ship icon]", "<div class='ship-icon'></div>");
 			//paragraphText = this.currLanguage.cards[id][1];
 			cardWrap.id = "card-" + id;
 			helpTextString = this.helpTextString(id);

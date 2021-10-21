@@ -270,7 +270,7 @@ div#draw-number.no-cards {
     border-radius: 50px;
     position: relative;
 }
-.cloud .ship-icon {
+.cloud > .ship-icon {
   width: 100px;
   height: 100px;
   position: absolute;
@@ -278,6 +278,15 @@ div#draw-number.no-cards {
   background-image: url(images/cards/ship_icon.png);
   background-repeat: no-repeat;
   top: 334px;
+}
+
+p .ship-icon {
+  background-image: url(images/cards/ship_icon-nasty_surprise.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
 }
 
 .card-front .card-image {
