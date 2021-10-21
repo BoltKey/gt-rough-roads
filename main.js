@@ -157,7 +157,7 @@ let app = {
 			replace("[i]", "<span class='i-icon'></span>")
 			;
 		}
-		var i = 1;
+    
 		document.querySelector("#help-text h1").innerHTML = strings.Texts.title["string_" + this.lang];
 		document.querySelector("#help-text h2").innerHTML = strings.Texts.subtitle["string_" + this.lang];
 		for (let paragraph = 1; paragraph <= 3; ++paragraph) {
@@ -167,6 +167,8 @@ let app = {
 		/*for (let helpNode of helpDiv.children) {
 			helpNode.innerHTML = this.currLanguage.help[i++];
 		}*/
+    let hintNo = Math.floor(Math.random() * 9) + 1;
+    document.getElementById("extra-hint").innerHTML = strings.Texts["extra_hint" + hintNo]["string_" + this.lang];
 	},
 	helpClick: function(evt) {
 		document.getElementById("help-wrap").classList.toggle("visible");
