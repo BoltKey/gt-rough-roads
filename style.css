@@ -401,6 +401,7 @@ button.hidden {
     font-family: roboto, sans-serif;
     font-weight: 400;
     font-style: normal;
+    padding: 0 5%;
 }
 
 #help-wrap {
