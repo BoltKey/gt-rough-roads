@@ -433,15 +433,19 @@ button.hidden {
     background: rgb(9 41 72 / 87%);
     border: solid 4px rgba(59, 97, 168, 1);
     border-radius: 20px;
-    padding: 2vw;
+    /* padding: 2vw; */
     position: absolute;
     /* top: 25px; */
-    font-size: min(30px, 3.5vw);
-    margin: 6%;
+    font-size: min(24px, 3.5vw);
+    /* margin: 6%; */
+    top: 6%;
+    left: 6%;
     opacity: 1;
     transition: opacity .5s, left .5s;
     z-index: 220;
     max-height: 88%;
+    /* height: 88%; */
+    width: 88%;
     overflow: auto;
 }
 .help-text {
@@ -492,6 +496,7 @@ button.hidden {
     font-family: roboto, sans-serif;
     font-weight: 400;
     font-style: normal;
+    padding: 0 5%;
 }
 
 #help-wrap {
