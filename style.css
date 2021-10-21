@@ -124,6 +124,7 @@ div#title-bottom {
 }
 #lang-select-wrap#lang-select-wrap.visible {
   transform: translate(10%, 34%);
+  z-index: 500;
 }
 
 #lang-select, .lang-select {
