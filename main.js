@@ -29,7 +29,15 @@ let app = {
 			// sorry
 		}
 		this.noSleep = new NoSleep();
-		this.lang = localStorage.getItem("language") || "en";
+    if (localStorage.getItem("language")) {
+      this.lang = localStorage.getItem("language");
+    }
+    else {
+      this.lang = navigator.language.substr(0, 2);
+    }
+    if (!["en", "de"].includes(this.lang)) {
+      this.lang = "en";
+    }
 		
 		this.cardTimers = {};
 
@@ -59,16 +67,10 @@ let app = {
 		if (!localStorage.getItem("rondell")) {
 			document.getElementById("help-wrap").classList.add("visible");
 		}
-		
-		for (let name of ['draw-button', 'discard-all-button', 'reshuffle-discard-button', 'help-button']) {
+    for (let name of ['draw-button', 'discard-all-button', 'reshuffle-discard-button', 'help-button']) {
 			let button = document.createElement("button");
 			button.id = name;
-			if (name == 'discard-all-button') {
-				button.innerHTML = strings.Texts.button_discard["string_" + this.lang];
-			}
-			if (name == 'reshuffle-discard-button') {
-				button.innerHTML = strings.Texts.button_reshuffle["string_" + this.lang];
-			}
+			
 			if (name == 'help-button') {
 				document.getElementById("top-bar").appendChild(button);
 			}
@@ -79,10 +81,13 @@ let app = {
 				document.getElementById("card-area").appendChild(button);
 			}
 		}
+		this.updateButtonStrings();
+		
 		
 		document.getElementById("draw-button").addEventListener("click", function(e) {this.drawCard()}.bind(this), this);
 		document.getElementById("draw-number").addEventListener("click", function(e) {this.drawCard()}.bind(this), this);
 		document.getElementById("discard-all-button").addEventListener("click", function(e) {this.discardAllClick()}.bind(this));
+		document.getElementById("lang-select").addEventListener("click", function(e) {this.selectLangClick()}.bind(this));
 		document.getElementById("reshuffle-discard-button").addEventListener("click", function(e) {this.reshuffleDiscard()}.bind(this));
 		document.getElementById("help-button").addEventListener("click", function(e) {this.helpClick()}.bind(this));
 		document.getElementById("discard-number").addEventListener("click", function(e) {this.discardDeckClick()}.bind(this));
@@ -93,7 +98,10 @@ let app = {
 		});
 		document.getElementById("help-wrap").addEventListener("click", function(e) {document.getElementById("help-wrap").classList.remove("visible")} );
 		
-		
+		document.getElementById("lang-select").classList.add("lang-select", this.lang);
+    for (var e of document.querySelectorAll("#lang-select-wrap .lang-select")) {
+      e.addEventListener("click", this.langClick);
+    }
 		
 		window.addEventListener('resize', function(e) {this.resizeWindow()}.bind(this));
 		window.addEventListener('deviceorientation', function(e) {this.resizeWindow()}.bind(this));
@@ -101,6 +109,39 @@ let app = {
 		this.resizeWindow();
 		this.updateRondell();
 	},
+  
+  updateButtonStrings: function() {
+    document.getElementById("discard-all-button").innerHTML = strings.Texts.button_discard["string_" + this.lang];
+    document.getElementById("reshuffle-discard-button").innerHTML = strings.Texts.button_reshuffle["string_" + this.lang];
+    if (document.getElementById("loading-button")) {
+      document.getElementById("loading-button").innerHTML = strings.Texts.button_title["string_" + this.lang];
+    }
+    
+    document.getElementById("logo").innerHTML = strings.Texts.game_name["string_" + this.lang];
+  },
+  
+  selectLangClick: function() {
+    document.getElementById("lang-select-wrap").classList.toggle("visible");
+  },
+  langClick: function(evt) {
+    console.log("clicking ", evt);
+    app.changeLang(evt.target.dataset.lang);
+    document.getElementById("lang-select-wrap").classList.remove("visible");
+  },
+  changeLang: function(lang) {
+    console.log("changing lang to ", lang);
+    localStorage.setItem("language", lang);
+    this.lang = lang;
+    this.updateButtonStrings();
+    this.fillHelp();
+    for (var card of document.querySelectorAll(".card-wrap")) {
+      card.remove();
+    }
+    this.updateRondell();
+    document.getElementById("lang-select").className = "lang-select " + lang;
+    
+    
+  },
 	
 	fillHelp: function() {
 		let helpDiv = document.getElementById("help-text");
@@ -116,7 +157,7 @@ let app = {
 			replace("[i]", "<span class='i-icon'></span>")
 			;
 		}
-		var i = 1;
+    
 		document.querySelector("#help-text h1").innerHTML = strings.Texts.title["string_" + this.lang];
 		document.querySelector("#help-text h2").innerHTML = strings.Texts.subtitle["string_" + this.lang];
 		for (let paragraph = 1; paragraph <= 3; ++paragraph) {
@@ -126,14 +167,27 @@ let app = {
 		/*for (let helpNode of helpDiv.children) {
 			helpNode.innerHTML = this.currLanguage.help[i++];
 		}*/
+    let hintNo = Math.floor(Math.random() * 9) + 1;
+    document.getElementById("extra-hint").innerHTML = strings.Texts["extra_hint" + hintNo]["string_" + this.lang];
 	},
 	helpClick: function(evt) {
 		document.getElementById("help-wrap").classList.toggle("visible");
 		let hintNo = Math.floor(Math.random() * 9) + 1;
 		document.getElementById("extra-hint").innerHTML = strings.Texts["extra_hint" + hintNo]["string_" + this.lang];
 	},
+  
+  helpTextString: function(id) {
+    var helpTextString = strings.Cards[id]["clarification_" + this.lang] ;
+		if (helpTextString) {
+			helpTextString = helpTextString.replaceAll("- ", "")
+			helpTextString = helpTextString.replaceAll("\n", "</li><li>");
+			helpTextString = "<ul><li>" + helpTextString + "</li></ul>";
+      helpTextString = helpTextString.replace("[ship icon]","<div class='ship-icon'></div>");
+    }
+    return helpTextString;
+  },
 
-	createCard: function(id, headerText, paragraphText) {
+	createCard: function(id) {
 		let addIButton = false;
 		let oldCard;
 		if (oldCard = document.getElementById("card-" + id)) {
@@ -142,16 +196,14 @@ let app = {
 		let cardWrap = document.createElement("div");
 		let helpTextString = null;
 		let cardStrings = strings.Cards[id];
+    let headerText = "";
+    let paragraphText = "";
 		if (id != "back") {
-			/*headerText = this.currLanguage.cards[id][0];
-			paragraphText = this.currLanguage.cards[id][1];*/
+			headerText = strings.Cards[id]["name_" + this.lang];
+			paragraphText = strings.Cards[id]["text_" + this.lang].replace("[ship icon]", "<div class='ship-icon'></div>");
+			//paragraphText = this.currLanguage.cards[id][1];
 			cardWrap.id = "card-" + id;
-			helpTextString = cardStrings["clarification_" + this.lang];
-			if (helpTextString) {
-				helpTextString = helpTextString.replace("-", "")
-				helpTextString = helpTextString.split("\n-").join("</li><li>");
-				helpTextString = "<ul><li>" + helpTextString + "</li></ul>";
-			}
+			helpTextString = this.helpTextString(id);
 		}
 		
 		if (helpTextString) {
@@ -188,16 +240,25 @@ let app = {
 		front.appendChild(xButton);
 		front.dataset.id = id;
 		
-		/*let header = document.createElement("h2");
+    let cloud = document.createElement("div");
+    cloud.classList.add("cloud");
+		let header = document.createElement("h2");
 		header.innerHTML = headerText;
 		let image = document.createElement("div");
 		image.classList.add("card-image");
 		let body = document.createElement("p");
-		body.innerHTML = paragraphText;*/
+		body.innerHTML = paragraphText;
+    
+    if (strings.Cards[id]?.ship_icon == "Y") {
+      let shipIcon = document.createElement("div");
+      shipIcon.classList.add("ship-icon");
+      cloud.appendChild(shipIcon);
+    }
 		
-		/*front.appendChild(header);
+		cloud.appendChild(header);
 		front.appendChild(image);
-		front.appendChild(body);*/
+		cloud.appendChild(body);
+    front.appendChild(cloud);
 		
 		let back = document.createElement("div");
 		back.classList.add("card-back");
@@ -507,7 +568,7 @@ let app = {
 		this.updateRondell();
 	},
 	makeReshuffleCard: function() {
-		let card = this.createCard("back", 0, 0);
+		let card = this.createCard("back");
 		card.id = "";
 		card.dataset.id = "";
 		card.style.zIndex = -5;
