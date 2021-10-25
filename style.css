@@ -156,6 +156,9 @@ div#title-bottom {
 .lang-select.en {
   background-image: url(images/flag-en.png);
 }
+.lang-select.cs {
+  background-image: url(images/flag-cs.png);
+}
 
 .landscape #top-bar #logo {
 	font-size: 300%;
