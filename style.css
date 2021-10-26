@@ -126,6 +126,7 @@ div#title-bottom {
   transform: translate(125%, 0);
   transition: transform .2s;
   width: fit-content;
+  overflow: hidden;
 }
 #lang-select-wrap#lang-select-wrap.visible {
   transform: translate(0%, 0);
