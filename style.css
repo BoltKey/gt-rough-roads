@@ -43,6 +43,7 @@ element {
     opacity: 1;
     position: absolute;
     z-index: 500;
+    overflow: hidden;
 }
 #title-page button {
     /* bottom: 5%; */
