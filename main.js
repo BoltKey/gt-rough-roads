@@ -35,7 +35,7 @@ let app = {
     else {
       this.lang = navigator.language.substr(0, 2);
     }
-    if (!["en", "de"].includes(this.lang)) {
+    if (!["en", "de", "cs"].includes(this.lang)) {
       this.lang = "en";
     }
 		
