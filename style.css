@@ -119,18 +119,19 @@ div#title-bottom {
   display: flex;
   margin: 0;
   max-height: unset;
-  right: 2%;
+  right: -50%;
   left: unset;
   top: 50px;
   position: absolute;
-  transform: translate(125%, 0);
-  transition: transform .2s;
+  transition: right .2s;
   width: fit-content;
   overflow: hidden;
+  z-index: 550;
 }
 #lang-select-wrap#lang-select-wrap.visible {
   transform: translate(0%, 0);
   z-index: 600;
+  right: 5%;
 }
 
 #lang-select, .lang-select {
