@@ -1398,7 +1398,7 @@ const strings =
     "button_title": {
       "string_en": "Hit the Road",
       "string_de": "Los geht's",
-      "string_cs": "Vyrazit",
+      "string_cs": "Jedeme!",
       "string_es": null,
       "string_fr": null,
       "string_it": null,
