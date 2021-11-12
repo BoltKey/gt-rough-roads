@@ -117,17 +117,20 @@ div#title-bottom {
 }
 
 #lang-select-wrap#lang-select-wrap {
-  display: flex;
-  margin: 0;
-  max-height: unset;
-  right: -50%;
-  left: unset;
-  top: 50px;
-  position: absolute;
-  transition: right .2s;
-  width: fit-content;
-  overflow: hidden;
-  z-index: 550;
+    display: flex;
+    margin: 0;
+    max-height: unset;
+    right: -50%;
+    left: unset;
+    top: 50px;
+    position: absolute;
+    transition: right .2s;
+    width: fit-content;
+    overflow: hidden;
+    z-index: 550;
+    flex-wrap: wrap;
+    max-width: 39%;
+    justify-content: center;
 }
 #lang-select-wrap#lang-select-wrap.visible {
   transform: translate(0%, 0);
@@ -161,6 +164,12 @@ div#title-bottom {
 }
 .lang-select.cs {
   background-image: url(images/flag-cs.png);
+}
+.lang-select.ko {
+  background-image: url(images/flag-ko.png);
+}
+.lang-select.jp {
+  background-image: url(images/flag-jp.png);
 }
 
 .landscape #top-bar #logo {
@@ -276,6 +285,11 @@ div#draw-number.no-cards {
     font-size: 42px;
     margin: 0px 40px;
     margin-bottom: 20px;
+}
+
+[data-lang=jp] .card-front p {
+    font-size: 37px;
+    line-height: 117%;
 }
 .cloud {
     background-image: url(images/cards/cloud.png);
