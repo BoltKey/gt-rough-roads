@@ -95,7 +95,7 @@ const strings =
       "clarification_ro": null,
       "future_ro": null,
       "name_ru": "Усталость металла",
-      "text_ru": "После происшествия, в котором кто-то из игроков получил или потерял дни полёта, бросьте кубик. Для каждого корабля, который переместился на число делений, равное или превышающее результат броска, бросьте два кубика, чтобы определить координаты. Уничтожьте модули, находящиеся в выпавших координатах.",
+      "text_ru": "После каждого происшествия, в котором кто-то нагнал или потерял дни полёта, бросьте кубик. Каждый корабль, который переместился на расстояние, равное или превышающее результат броска, теряет по модулю (бросьте кубики дважды, чтобы определить его координаты).",
       "clarification_ru": null,
       "future_ru": null
     },
@@ -143,10 +143,10 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
-      "future_ru": null
+      "name_ru": "Не кантовать!",
+      "text_ru": "Если на вашем корабле уничтожили модуль с грузами или батареями, он взрывается: также уничтожьте все 8 модулей вокруг этого модуля. Это может спровоцировать цепную реакцию.",
+      "clarification_ru": "- Срабатывает, только если модуль был уничтожен (выстрелом, метеором, взрывом или из-за саботажа). Если модуль просто отваливается, ничего не происходит.\n- Если взрыв уничтожает другой модуль с грузами или батареями, он тоже взрывается.\n- Модуль не взрывается, если в нём нет грузов или батарей.",
+      "future_ru": "Срабатывает, только если модуль был уничтожен (выстрелом, метеором, взрывом или из-за саботажа). Если модуль просто отваливается, ничего не происходит.\nЕсли взрыв уничтожает другой модуль с грузами или батареями, он тоже взрывается.\nМодуль не взрывается, если в нём нет грузов или батарей."
     },
     "paranoid_locals": {
       "pic_status": "F",
@@ -192,9 +192,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Прохладный приём",
+      "text_ru": "Игрок, который первым решит приземлиться на новой планете, получает приветственный залп из мелкокалиберной пушки спереди. Если кроме него никто больше не захотел приземляться, залп становится крупнокалиберным.",
+      "clarification_ru": "- Сначала решите, кто хочет приземлиться (в порядке очерёдности). Затем бросьте кубики для выстрела, а после этого грузите товары.",
       "future_ru": null
     },
     "cosmic_psychosis": {
@@ -241,9 +241,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Космическое безумие",
+      "text_ru": "После каждого происшествия бросайте два кубика, чтобы определить координаты. Если на вашем корабле по этим координатам есть хотя бы один космонавт (не инопланетянин), то все обитатели каюты сходят с ума. Уничтожьте модуль этой каюты.",
+      "clarification_ru": "- Бросьте оба кубика дважды (как во время саботажа), но для всех игроков.",
       "future_ru": null
     },
     "personalized_cabins": {
@@ -252,8 +252,8 @@ const strings =
       "translate": null,
       "ship_icon": null,
       "name_en": "Personalized Cabins",
-      "text_en": "The cabins belongs to their crew, they are not paid as lost components. Whenever you lose one or more crew members, give up also their cabins (including a remaining astronaut, if any).",
-      "clarification_en": "- First give up all crew member (incl. aliens), then their cabins.\n- Cabins lost by any way are returned to the pile, not to your lost components.",
+      "text_en": "Each cabin is owned by its crew, so you pay no end-of-flight penalties for lost cabins. When you give up crew, remove their cabins from the ship (even if another crew member still lives there).",
+      "clarification_en": "- First give up the crew members, then resolve the removal of their cabins.\n- Removed cabins do not count as \"destroyed\" or \"fallen off\".\n- Put lost or removed cabins in the general component pile, not your discard pile.\n- This applies even to cabins left in your reserve after building.",
       "future text (for expansion stuff)": null,
       "name_de": "Crew-Kabinen",
       "text_de": "Die Kabinen sind im Besitz ihrer Crew, müssen also nicht bezahlt werden, wenn sie verloren gehen. Immer wenn du 1 oder mehr Crewmitglieder verlierst, gibst du auch deren Kabinen auf ( inklusive des Astronauten, der sich darin eventuell noch befindet).",
@@ -290,9 +290,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Личные каюты",
+      "text_ru": "Члены экипажа выкупили свои каюты заранее. Так что потерянные каюты не отправляются в утиль. Когда из каюты пропадает хотя бы один член экипажа, каюта отваливается от корабля (вместе со вторым членом экипажа, если он есть).",
+      "clarification_ru": "- Сначала верните потерянный экипаж в запас (включая инопланетян), затем их каюты отваливаются.\n- Уничтоженные и отвалившиеся каюты возвращаются в запас. Они не попадают в утиль.",
       "future_ru": null
     },
     "tough_trip": {
@@ -339,7 +339,7 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
+      "name_ru": "Нелёгкая дорога",
       "text_ru": null,
       "clarification_ru": null,
       "future_ru": null
@@ -388,8 +388,8 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
+      "name_ru": "Метеоритная инверсия",
+      "text_ru": "Вместо больших метеоритов в вас летят малые, а вместо малых — большие.",
       "clarification_ru": null,
       "future_ru": null
     },
@@ -437,9 +437,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Безжалостная судьба",
+      "text_ru": "Эффекты саботажа и зон конфликта действуют на всех, кроме сильнейшего по соответствующему показателю игрока. Каюты, затронутые эпидемией, отваливаются от кораблей. Вы не теряете дни полёта в звёздной пыли: вместо этого все модули с оголёнными разъёмами отваливаются от кораблей.",
+      "clarification_ru": "- Например, саботаж влияет на всех, кроме корабля с самым многочисленным экипажем. Определите координаты трижды (но игнорируйте оставшиеся координаты после того, как пострадаете). Если все игроки равны по соответствуюшему показателю, пострадать придётся всем, кроме летящего самым последним.",
       "future_ru": null
     },
     "stiff_competition": {
@@ -486,7 +486,7 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
+      "name_ru": "Жёсткая конкуренция",
       "text_ru": null,
       "clarification_ru": null,
       "future_ru": null
@@ -504,7 +504,7 @@ const strings =
       "text_de": "Immer wenn du Feinden begegnest, würfle mit 2 Würfeln und addiere das niedrigere Ergebnis zur Stärke der Feinde.",
       "clarification_de": null,
       "future_de": null,
-      "name_cs": "Zákeřní padouši",
+      "name_cs": "Velcí zlouni",
       "text_cs": "Kdykoliv narazíte na nepřátele, hoďte dvěma kostkami a\\u00a0nižší hodnotu přidejte k\\u00a0jejich síle.",
       "clarification_cs": null,
       "name_es": null,
@@ -535,8 +535,8 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
+      "name_ru": "Пушки побольше",
+      "text_ru": "Когда на пути возникает вражеский корабль, бросьте кубик и прибавьте результат к его мощности пушек.",
       "clarification_ru": null,
       "future_ru": null
     },
@@ -546,14 +546,14 @@ const strings =
       "translate": "X",
       "ship_icon": null,
       "name_en": "Engine Envy",
-      "text_en": "Whenever a new player becomes leader, the player behind him may choose a cannon on his ship (double one must be paid) and send a small cannon fire in the corresponding row or column and from the oposite direction to the new leader.",
-      "clarification_en": "- I.e. if you choose a front cannon, opponent is hit from the back, if you choose a left cannon, opponent is hit from the right, etc.",
+      "text_en": "Whenever a player passes the leader, the former leader may shoot the new leader by firing one cannon. (Pay 1 battery token, if necessary.) The new leader receives light cannon fire in that row or column. (Determine direction intuitively.)",
+      "clarification_en": "- For example, if you choose a forward-pointing cannon, your opponent is hit in the rear; if you choose a left-pointing cannon, your opponent is hit from the right, etc.\n- It's just one blast of light cannon fire, even if a double cannon is used.",
       "future text (for expansion stuff)": null,
       "name_de": null,
       "text_de": null,
       "clarification_de": null,
       "future_de": null,
-      "name_cs": "Motorová závist",
+      "name_cs": "Nepřející soupeři",
       "text_cs": "Kdykoliv se do vedení dostane nový hráč, hráč za ním se může rozhodnout na něj vystřelit. Zvolí si jedno ze svých děl (za dvojité musí zaplatit baterii) a\\u00a0vystřelí z\\u00a0něj malou střelu v\\u00a0daném sloupci nebo řádku. Pozor, střela míří v\\u00a0opačném směru!",
       "clarification_cs": "- Např. pokud si vyberete dělo mířící dopředu, zasáhnete vedoucího hráče zezadu. Když si vyberete dělo mířící doleva, zasáhnete jej zprava atp.",
       "name_es": null,
@@ -584,9 +584,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Манёвры при обгоне",
+      "text_ru": "Когда кто-то из игроков становится лидером, корабль, который оказался позади него, может выстрелить по нему из пушки. Двойную пушку нужно при этом обеспечить энергией. Выстрел считается мелкокалиберным и прилетает со стороны, противоположной направлению выстрела: если пушка направлена влево — справа, если вперёд — сзади и т.д.",
+      "clarification_ru": "- Выстрел считается мелкокалиберным и прилетает лидеру со стороны, противоположной направлению выстрела: если пушка направлена влево - справа, если вперёд - сзади и т.д.",
       "future_ru": null
     },
     "piercing_projectiles": {
@@ -633,9 +633,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Лёгкая защита",
+      "text_ru": "Если метеорит или выстрел уничтожает модуль, он также попадает в следующий по направлению модуль.",
+      "clarification_ru": "- Скорее всего, второй модуль также будет уничтожен. Но помните, что малый метеорит отскочит от гладкой стороны модуля даже в таких условиях.",
       "future_ru": null
     },
     "union_ship": {
@@ -682,9 +682,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Профсоюз",
+      "text_ru": "Когда в колоде происшествий останется 1 карта, потеряйте 1 кредит или 1 товар за каждого члена экипажа на корабле. В противном случае вам придётся сдаться.",
+      "clarification_ru": "- Профсоюз не принимает батареи вместо товаров.\n- Если у вас не хватает кредитов и товаров, чтобы расплатиться с профсоюзом, вы будете вынуждены сдаться.",
       "future_ru": null
     },
     "bad_luck": {
@@ -731,9 +731,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Не везёт так не везёт",
+      "text_ru": "Если метеорит или выстрел пролетает мимо всех дальнобойщиков (и даже не попадает в щиты), перебросьте оба кубика (до трёх раз).",
+      "clarification_ru": "- Если малый метеорит попал в кого-то, но отскочил, перебрасывать кубики не нужно.",
       "future_ru": null
     },
     "nasty_surprise": {
@@ -749,7 +749,7 @@ const strings =
       "text_de": "Nach dem Bau, jedoch vor der Vorbereitung deines Schiffs, ziehst du eine Karte, die diese hier ersetzt. (Falls die Ersatzkarte eine durch [ship icon] gekennzeichnete Baukarte ist, ziehe einen neuen Ersatz.)",
       "clarification_de": "Nach dem Bau, jedoch vor der Vorbereitung deines Schiffs, ziehst du eine Karte, die diese hier ersetzt. (Falls die Ersatzkarte eine durch [ship icon] gekennzeichnete Baukarte ist, ziehe einen neuen Ersatz.)",
       "future_de": null,
-      "name_cs": "Ošklivé překvapení",
+      "name_cs": "Nepříjemné překvapení",
       "text_cs": "Poté, co dostavíte, ale před přípravou lodí nahraďte tuto kartu jinou náhodnou. (Pokud je zvolená karta konstrukční, označené [ship icon], lízněte jinou.)",
       "clarification_cs": "- Po dostavění odstraňte tuto kartu kliknutím na [x]. Novou kartu otočte tlačítkem [+].\n- Otáčejte tak dlouho, než najdete kartu než ikony lodi.",
       "name_es": null,
@@ -780,9 +780,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Неприятный сюрприз",
+      "text_ru": "Когда все завершили постройку кораблей, замените эту карту другой! Если новая карта помечена символом [ship icon], также замените её.",
+      "clarification_ru": "- Когда все завершили постройку кораблей, нажмите на кнопку [x] на этой карте и откройте новую, нажав [+] слева.\n- Если на новой карте символ правила постройки, также замените её (см. выше).\n- Вот он, ваш сюрприз! :)",
       "future_ru": null
     },
     "infected_goods": {
@@ -829,9 +829,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Заражённые товары",
+      "text_ru": "Когда вы грузите товары на корабль, вы теряете по 1 космонавту за каждый товар, доступный для погрузки (даже если вы не будете брать их все). Если на корабле есть инопланетяне, вы теряете на 1 космонавта меньше за каждого из них: у них иммунитет.",
+      "clarification_ru": "- Например: у вас в экипаже есть 1 инопланетянин. Если вы приземлитесь на планету, на которой есть 3 товара, и погрузите хотя бы один, вы потеряете 2 космонавтов.",
       "future_ru": null
     },
     "defective_connectors": {
@@ -878,9 +878,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Несостыковки",
+      "text_ru": "Когда нужно определить мощность двигателей, отнимите 1 за каждый универсальный разъём, соединённый не с универсальным разъёмом. Если где-то в соединениях торчат лишние трубы разъёмов, вы можете отсоединить модули (они отвалятся!), чтобы это исправить.",
+      "clarification_ru": "- В зоне конфликта отрицательная мощность двигателей считается равной 0.",
       "future_ru": null
     },
     "space_junk": {
@@ -927,9 +927,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Космический мусор",
+      "text_ru": "После каждого происшествия модули, отвалившиеся от летящих впереди кораблей, становятся большими метеоритами для летящих позади. Эти метеориты прилетают спереди.",
+      "clarification_ru": "- Если модуль был уничтожен (метеоритом или выстрелом), это не считается. Модуль должен именно отвалиться от корабля.\n- Отложите все отвалившиеся модули в отдельный столбик, пока происшествие не закончится.\n- Затем летящий первым считает, сколько у него отвалившихся модулей: все игроки позади сталкиваются с ними. Затем проделайте то же самое для 2-го игрока по порядку и так далее.\n- Если из-за космического мусора от корабля отвалились модули, они сразу становятся космическим мусором для летящих позади.",
       "future_ru": null
     },
     "sommersault": {
@@ -976,8 +976,8 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
+      "name_ru": "Гравитационная аномалия",
+      "text_ru": "Во время постройки кораблей сопла двигателей могут быть направлены не только назад, но вперёд. Двигатели, направленные соплами вперёд, не учитываются при подсчёте мощности. Открытый космос и планеты разворачивают все корабли на 180 градусов.",
       "clarification_ru": null,
       "future_ru": null
     },
@@ -1025,10 +1025,10 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
-      "future_ru": null
+      "name_ru": "Мёртвая зона",
+      "text_ru": "Перед постройкой кораблей бросьте кубики, чтобы определить столбец на планшетах кораблей (если в столбце нет ячеек, перебросьте, пока не выпадет столбец с ячейками). Все модули в ячейках этого столбца не могут функционировать.",
+      "clarification_ru": "- Модули в столбце мёртвой зоны считаются структурными модулями. Двигатели и пушки не дают мощности, батарейные модули пустуют, трюмы непригодны для товаров, каюты - для жизни, жизнеобеспечение ломается. Но все коннекторы работают как обычно.\n- Вы обязаны соблюдать все правила постройки и ориентации модулей даже в столбце мёртвой зоны.",
+      "future_ru": "Модули в столбце мёртвой зоны считаются структурными модулями.\nДвигатели и пушки в столбце мёртвой зоны не дают мощности, батарейные модули пустуют, трюмы непригодны для товаров, каюты - для жизни, жизнеобеспечение ломается. Но все коннекторы работают как обычно.\nВы обязаны соблюдать все правила постройки и ориентации модулей даже в столбце мёртвой зоны."
     },
     "abandoned_debris": {
       "pic_status": "a",
@@ -1036,8 +1036,8 @@ const strings =
       "translate": null,
       "ship_icon": null,
       "name_en": "Abandoned Debris",
-      "text_en": "When abandoned ship or station card is revealed, all players (in flight order) vote for a direction. All ships face a big meteor from the direction with the most votes (or from all tied directions).",
-      "clarification_en": "- In case of tie, evaluate meteors from all tied directions in order in which they got the first vote.",
+      "text_en": "At the start of an Abandoned Ship or Abandoned Station adventure, each player, in flight order, votes for a direction. All ships face a large meteor from the direction with the most votes (or from all tied directions).",
+      "clarification_en": "- In a tie, evaluate meteors from all tied directions in the order in which they got their first vote.",
       "future text (for expansion stuff)": null,
       "name_de": "Trümmerteile",
       "text_de": "Wenn eine Karte Verlassene Station oder Verlassenes Schiff aufgedeckt wird, stimmen alle Spieler (in Flugreihenfolge) für eine Richtung. Alle Schiffe werden von einem großen Meteoriten aus der Richtung mit den meisten Stimmen getroffen (oder bei Gleichstand aus allen diesen Richtungen).",
@@ -1074,9 +1074,9 @@ const strings =
       "text_ro": null,
       "clarification_ro": null,
       "future_ro": null,
-      "name_ru": null,
-      "text_ru": null,
-      "clarification_ru": null,
+      "name_ru": "Облака обломков",
+      "text_ru": "Когда игроки сталкиваются с заброшенной станцией или заброшенным кораблём, перед этим все по очереди (начиная с лидера) выбирают направление - спереди, слева, справа или сзади. Затем все немедленно сталкиваются с метеоритом, летящим со стороны, получившей большинство голосов (если таких несколько, то по одному с каждой из них).",
+      "clarification_ru": "- Если таких метеоритов несколько, первым прилетает метеорит, получивший первый голос, и далее в порядке очерёдности.",
       "future_ru": null
     }
   },
@@ -1092,7 +1092,7 @@ const strings =
       "string_ko": "고된 여정에 오신 것을 환영합니다.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Ухабистый космос ждёт!"
     },
     "subtitle": {
       "string_en": "an expansion for the Galaxy Trucker board game",
@@ -1105,7 +1105,7 @@ const strings =
       "string_ko": "갤럭시 트러커 보드게임 확장",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Дополнение для настольной игры «Космические дальнобойщики»"
     },
     "": {
       "string_en": null,
@@ -1131,7 +1131,7 @@ const strings =
       "string_ko": "이 앱은 고된 여정 확장 카드입니다. 일반 카드 더미로 할 수 있는 것들을 할 수 있습니다. [+] 버튼을 눌러서 카드 한 장을 공개하거나, [x] 버튼을 눌러서 카드 한 장을 버리는 등의 작업을 할 수 있습니다. 왼쪽 하단의 아이콘을 클릭하면 버리는 카드 더미를 확인할 수 있습니다.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Это цифровая колода карт ухабистого космоса. Чтобы взять новую карту, нажмите [+]. Чтобы сбросить карту, нажмите [x]. Чтобы посмотреть на открытую карту, нажмите на неё. Чтобы посмотреть карты в сбросе, нажимайте на красный значок слева внизу."
     },
     "paragraph2": {
       "string_en": "Agree on the difficulty: 1 – hard, 2 – extreme, 3 – insane. Before each flight, reveal that many cards. Read them out loud – they contain special rules for that flight. Keep your device nearby, so players can check the cards at any time. Some cards may have rules clarifications [i].",
@@ -1144,7 +1144,7 @@ const strings =
       "string_ko": "난이도를 정하세요: 1 - 어려움, 2 - 매우 어려움, 3 - 미치게 어려움. 각 비행을 시작하기 전에, 선택한 난이도만큼 카드를 공개합니다. 내용을 소리 내어 읽습니다. 각 카드는 해당 비행에 적용할 특수 규칙이 표시되어 있습니다. 플레이어들이 언제든지 카드의 내용을 확인할 수 있도록 기기를 근처에 두세요. 일부 카드는 좀 더 자세한 규칙이 설명된 정보가 포함되어 있습니다 [i].",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Перед началом игры выберите уровень ухабистости космоса: 1 (сложный), 2 (очень сложный) или 3 (кошмарный) — и откройте столько же карт. На каждой открытой карте есть новое правило, которое всем придётся соблюдать до конца полёта. Прочтите текст карты вслух. Держите ваше устройство поблизости, чтобы все могли в любой момент свериться с картами. К некоторым картам есть пояснения: чтобы их прочесть, нажмите [i]."
     },
     "paragraph3": {
       "string_en": "After the flight, discard the cards. The app remembers your discard pile, so you will face different cards next time. Or you can choose to shuffle the discard pile back into the deck.",
@@ -1157,7 +1157,7 @@ const strings =
       "string_ko": "비행이 끝나면 카드를 버립니다. 이 앱은 여러분이 버린 카드 더미를 기록하기 때문에, 다음번에는 다른 카드를 만나보실 수 있습니다. 원하시면 버린 카드 더미를 뽑는 카드 더미에 섞을 수 있습니다.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "После полёта сбросьте все карты ухабистого космоса. Приложение сохраняет все карты, которые вы открыли или сбросили: в следующем полёте вы возьмёте новые. В любой момент вы можете замешать карты из сброса в колоду, нажав на соответствующую кнопку."
     },
     "footnote": {
       "string_en": "Important: Do not use this expansion with new players. Lower the difficulty if someone chickens out. [random_extra_hint]. Have fun!",
@@ -1170,7 +1170,7 @@ const strings =
       "string_ko": "중요합니다: 이 게임을 처음 하는 분들과 게임을 하실 때는 이 확장을 사용하지 마십시오. [random_extra_hint]. 즐거운 비행 되세요!",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Важно! Не для новичков и неопытных дальнобойщиков. Если кто-то сдрейфит, понизьте уровень сложности. [random_extra_hint]. Главное — чтобы всем было весело!"
     },
     "extra_hint0": {
       "string_en": "Do not let kids eat the game pieces",
@@ -1183,7 +1183,7 @@ const strings =
       "string_ko": "아이들이 게임 구성품을 입에 넣지 못하게 하세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Не разрешайте детям есть компоненты игры"
     },
     "extra_hint1": {
       "string_en": "Do not lick the device screen",
@@ -1196,7 +1196,7 @@ const strings =
       "string_ko": "기기의 화면을 핥지 마세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Не трогайте экран языком"
     },
     "extra_hint2": {
       "string_en": "Do not let any cat walk on the table while playing",
@@ -1209,7 +1209,7 @@ const strings =
       "string_ko": "게임을 할 때 고양이가 테이블 위를 걷게 두지 마세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Не давайте коту забраться на стол во время игры"
     },
     "extra_hint3": {
       "string_en": "Wash your hands regularly",
@@ -1222,7 +1222,7 @@ const strings =
       "string_ko": "규칙적으로 손을 씻으세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Регулярно мойте руки"
     },
     "extra_hint4": {
       "string_en": "Do not use strong language unless your ship completely falls apart",
@@ -1235,7 +1235,7 @@ const strings =
       "string_ko": "우주선이 완파되지 않는 한, 너무 심한 말은 하지 마세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Не используйте бранные слова, пока ваш корабль окончательно не развалится"
     },
     "extra_hint5": {
       "string_en": "Do not play Galaxy Trucker while driving",
@@ -1248,7 +1248,7 @@ const strings =
       "string_ko": "운전하실 때는 갤럭시 트러커를 하지 마세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Не играйте в «Космических дальнобойщиков» за рулём"
     },
     "extra_hint6": {
       "string_en": "Do not flip the table before the game ends",
@@ -1261,7 +1261,7 @@ const strings =
       "string_ko": "게임이 끝나기 전에 테이블을 뒤엎지 마세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Не сбрасывайте компоненты со стола (хотя бы до конца игры)"
     },
     "extra_hint7": {
       "string_en": "Do not play insane difficulty with the elderly",
@@ -1274,7 +1274,7 @@ const strings =
       "string_ko": "어르신들과 게임을 할 때는 미치게 어려운 난이도를 설정하지 마세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Не играйте на кошмарном уровне сложности с бабушками и дедушками"
     },
     "extra_hint8": {
       "string_en": "Watch your surroundings while grabbing tiles",
@@ -1287,7 +1287,7 @@ const strings =
       "string_ko": "부품 타일을 집는 동안 주변 기물을 조심하세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Думайте о здоровье других игроков, когда берёте модули со свалки"
     },
     "extra_hint9": {
       "string_en": "Do not close eyes when facing meteors",
@@ -1300,7 +1300,7 @@ const strings =
       "string_ko": "유성을 만났을 때 눈을 감지 마세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Не летите на метеориты с закрытыми глазами"
     },
     "extra_hint10": {
       "string_en": "Do not drink hot coffee on rough roads",
@@ -1313,7 +1313,7 @@ const strings =
       "string_ko": "고된 여정에서 뜨거운 커피를 마시지 마세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Не пейте кофе на ухабах (даже в космосе)"
     },
     "extra_hint11": {
       "string_en": "Expect trouble",
@@ -1326,7 +1326,7 @@ const strings =
       "string_ko": "골칫거리가 있을 것을 예상하세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Будьте готовы"
     },
     "extra_hint12": {
       "string_en": "Do not try to cut the deck, especially not with scissors",
@@ -1339,7 +1339,7 @@ const strings =
       "string_ko": "카드를 찢으려고 하지 마세요. 특히 가위로는요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Не режьте карты ножницами (даже на электронном устройстве)"
     },
     "extra_hint13": {
       "string_en": "Watch for potholes",
@@ -1352,7 +1352,7 @@ const strings =
       "string_ko": "구덩이를 조심하세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Соблюдайте правила дорожного движения"
     },
     "extra_hint14": {
       "string_en": "Before launch, be sure your hazard lights are in working order",
@@ -1365,7 +1365,7 @@ const strings =
       "string_ko": "비행을 시작하기 전에, 비상등이 제대로 작동하는지 확인하세요.",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Проверьте фары и сигнальные фонари перед взлётом"
     },
     "button_discard": {
       "string_en": "Discard All",
@@ -1378,7 +1378,7 @@ const strings =
       "string_ko": "모두 버리기",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Сбросить все"
     },
     "button_reshuffle": {
       "string_en": "Reshuffle Discard",
@@ -1391,7 +1391,7 @@ const strings =
       "string_ko": "버린 카드 섞기",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Замешать в колоду"
     },
     "button_title": {
       "string_en": "Hit the Road",
@@ -1404,7 +1404,7 @@ const strings =
       "string_ko": "시작하기",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Поехали!"
     },
     "game_name": {
       "string_en": "Rough Roads",
@@ -1417,7 +1417,7 @@ const strings =
       "string_ko": "고된 여정",
       "string_pl": null,
       "string_ro": null,
-      "string_ru": null
+      "string_ru": "Ухабистый космос"
     }
   }
 }
