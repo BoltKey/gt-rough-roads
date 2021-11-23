@@ -35,7 +35,7 @@ let app = {
     else {
       this.lang = navigator.language.substr(0, 2);
     }
-    if (!["en", "de", "cs"].includes(this.lang)) {
+    if (!["en", "de", "cs", "ko", "jp"].includes(this.lang)) {
       this.lang = "en";
     }
 		
@@ -106,6 +106,7 @@ let app = {
 		window.addEventListener('resize', function(e) {this.resizeWindow()}.bind(this));
 		window.addEventListener('deviceorientation', function(e) {this.resizeWindow()}.bind(this));
 		
+    this.changeLang(this.lang)
 		this.resizeWindow();
 		this.updateRondell();
 	},
@@ -139,7 +140,7 @@ let app = {
     }
     this.updateRondell();
     document.getElementById("lang-select").className = "lang-select " + lang;
-    
+    document.body.dataset.lang = lang;
     
   },
 	
