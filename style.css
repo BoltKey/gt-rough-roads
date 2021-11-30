@@ -171,6 +171,9 @@ div#title-bottom {
 .lang-select.jp {
   background-image: url(images/flag-jp.png);
 }
+.lang-select.fr {
+  background-image: url(images/flag-fr.png);
+}
 
 .landscape #top-bar #logo {
 	font-size: 300%;
