@@ -286,6 +286,10 @@ div#draw-number.no-cards {
   font-size: 83px;
 }
 
+body[data-lang='ru'] .card-front h2 {
+    font-size: 72px;
+}
+
 .card-front p {
     font-family: hpSimplified, Arial;
     font-size: 42px;
