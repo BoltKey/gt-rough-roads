@@ -101,7 +101,7 @@ const strings =
     },
     "explosive_stuff": {
       "pic_status": "a",
-      "app_status": "X",
+      "app_status": null,
       "translate": null,
       "ship_icon": null,
       "name_en": "Explosive Stuff",
@@ -248,7 +248,7 @@ const strings =
     },
     "personalized_cabins": {
       "pic_status": "a",
-      "app_status": "X",
+      "app_status": null,
       "translate": null,
       "ship_icon": null,
       "name_en": "Personalized Cabins",
@@ -1032,7 +1032,7 @@ const strings =
     },
     "abandoned_debris": {
       "pic_status": "a",
-      "app_status": "X",
+      "app_status": null,
       "translate": null,
       "ship_icon": null,
       "name_en": "Abandoned Debris",
