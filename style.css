@@ -171,6 +171,12 @@ div#title-bottom {
 .lang-select.jp {
   background-image: url(images/flag-jp.png);
 }
+.lang-select.fr {
+  background-image: url(images/flag-fr.png);
+}
+.lang-select.ru {
+  background-image: url(images/flag-ru.png);
+}
 
 .landscape #top-bar #logo {
 	font-size: 300%;
@@ -278,6 +284,10 @@ div#draw-number.no-cards {
   font-weight: 700;
   font-style: normal;
   font-size: 83px;
+}
+
+body[data-lang='ru'] .card-front h2 {
+    font-size: 72px;
 }
 
 .card-front p {
